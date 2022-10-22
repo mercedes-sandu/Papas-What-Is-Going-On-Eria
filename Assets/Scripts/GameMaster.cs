@@ -10,10 +10,14 @@ public class GameMaster : MonoBehaviour
     /// </summary>
     public static GameMaster Instance = null;
 
-    // public Dictionary<TypeOfIngredient, string> IngredientPaths = new Dictionary<TypeOfIngredient, string>();
-
+    /// <summary>
+    /// The time that is allowed to pass until the level is over.
+    /// </summary>
     [SerializeField] private float _levelTime;
     
+    /// <summary>
+    /// Initializes components and variables.
+    /// </summary>
     void Awake()
     {
         if (!Instance)
@@ -23,29 +27,5 @@ public class GameMaster : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
-        // SetUpDictionary();
     }
-    
-    void Start()
-    {
-        
-    }
-    
-    void Update()
-    {
-        
-    }
-
-    /// <summary>
-    /// Initializes the dictionary with all of the prefab folders of the various types of ingredients.
-    /// </summary>
-    // private void SetUpDictionary()
-    // {
-    //     foreach (TypeOfIngredient type in TypeOfIngredient.GetValues(typeof(TypeOfIngredient)))
-    //     {
-    //         string path = Application.dataPath;
-    //         IngredientPaths.Add(type, path + "/Prefabs/" + type);
-    //     }
-    // }
 }

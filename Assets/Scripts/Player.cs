@@ -8,18 +8,7 @@ public class Player : MonoBehaviour
     /// The player's score.
     /// </summary>
     private int _score;
-    
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     /// <summary>
     /// Gets or sets the player's score.
     /// </summary>

@@ -4,13 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerMovement : MonoBehaviour
+public class PlayerControl : MonoBehaviour
 {
     /// <summary>
     /// An instance of the player's movement component that is accessible by all classes.
     /// </summary>
-    public static PlayerMovement Instance = null;
-    
+    public static PlayerControl Instance = null;
+
+    public GameObject InteractIcon;
+
     /// <summary>
     /// The player's movement speed.
     /// </summary>
@@ -20,12 +22,12 @@ public class PlayerMovement : MonoBehaviour
     /// The direction in which the player is facing.
     /// </summary>
     private Vector2 _direction = Vector2.down;
-    
+
     /// <summary>
     /// The player's rigidbody component.
     /// </summary>
     private Rigidbody2D _rb;
-    
+
     /// <summary>
     /// The player's animator component.
     /// </summary>
@@ -39,7 +41,8 @@ public class PlayerMovement : MonoBehaviour
         if (!Instance)
         {
             Instance = this;
-        } else if (Instance != this)
+        }
+        else if (Instance != this)
         {
             Destroy(gameObject);
         }
@@ -48,13 +51,23 @@ public class PlayerMovement : MonoBehaviour
         _anim = GetComponent<Animator>();
     }
 
+    void Start()
+    {
+        InteractIcon.SetActive(false);
+    }
+
     /// <summary>
     /// Checks for input to move the player.
     /// </summary>
     void FixedUpdate()
     {
         Vector2 dir = Vector2.zero;
-        
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            CheckInteraction();
+        }
+
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             dir.y = 1f;
@@ -65,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
             dir.y = -1f;
             _direction = Vector2.down;
         }
+
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             dir.x = 1f;
@@ -75,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
             dir.x = -1f;
             _direction = Vector2.left;
         }
-        
+
         _rb.velocity = dir.normalized * _speed;
     }
 
@@ -84,4 +98,25 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     /// <returns>Player direction.</returns>
     public Vector2 GetDirection() => _direction;
+
+    public void OpenInteractableIcon() => InteractIcon.SetActive(true);
+
+    public void CloseInteractableIcon() => InteractIcon.SetActive(false);
+
+    private void CheckInteraction()
+    {
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, new Vector2(0.1f, 1f), 0, 
+            Vector2.zero);
+        
+        if (hits.Length > 0)
+        {
+            foreach (var rc in hits)
+            {
+                if (rc.transform.GetComponent<Interactable>())
+                {
+                    rc.transform.GetComponent<Interactable>().Interact();
+                }
+            }
+        }
+    }
 }
