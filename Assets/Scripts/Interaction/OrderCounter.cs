@@ -15,11 +15,6 @@ public class OrderCounter : Interactable
     /// 
     /// </summary>
     private Order _order;
-    
-    /// <summary>
-    /// 
-    /// </summary>
-    private Dictionary<TypeOfIngredient, GameObject> _orderList = new Dictionary<TypeOfIngredient, GameObject>();
 
     /// <summary>
     /// 
@@ -35,7 +30,7 @@ public class OrderCounter : Interactable
     public override void Interact()
     {
         _order.InitializeOrder();
-        _orderList = _order.GetIngredientsDict();
-        orderCanvas.GetComponent<OrderCanvas>().UpdateOrder(_orderList);
+        orderCanvas.GetComponent<OrderCanvas>().UpdateOrder(_order.GetIngredientsDict(), _order.GetCookTime(), 
+            _order.GetSoda());
     }
 }
