@@ -11,7 +11,7 @@ public class PlayerControl : MonoBehaviour
     /// </summary>
     public static PlayerControl Instance = null;
 
-    public GameObject InteractIcon;
+    // public GameObject InteractIcon;
 
     /// <summary>
     /// The player's movement speed.
@@ -53,7 +53,7 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
-        InteractIcon.SetActive(false);
+        // InteractIcon.SetActive(false);
     }
 
     /// <summary>
@@ -63,10 +63,10 @@ public class PlayerControl : MonoBehaviour
     {
         Vector2 dir = Vector2.zero;
 
-        if (Input.GetKey(KeyCode.E))
-        {
-            CheckInteraction();
-        }
+        // if (Input.GetKey(KeyCode.E))
+        // {
+        //     CheckInteraction();
+        // }
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
@@ -99,24 +99,24 @@ public class PlayerControl : MonoBehaviour
     /// <returns>Player direction.</returns>
     public Vector2 GetDirection() => _direction;
 
-    public void OpenInteractableIcon() => InteractIcon.SetActive(true);
-
-    public void CloseInteractableIcon() => InteractIcon.SetActive(false);
-
-    private void CheckInteraction()
-    {
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, new Vector2(0.1f, 1f), 0, 
-            Vector2.zero);
-        
-        if (hits.Length > 0)
-        {
-            foreach (var rc in hits)
-            {
-                if (rc.transform.GetComponent<Interactable>())
-                {
-                    rc.transform.GetComponent<Interactable>().Interact();
-                }
-            }
-        }
-    }
+    // public void OpenInteractableIcon() => InteractIcon.SetActive(true);
+    //
+    // public void CloseInteractableIcon() => InteractIcon.SetActive(false);
+    //
+    // private void CheckInteraction()
+    // {
+    //     RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, new Vector2(0.1f, 1f), 0, 
+    //         Vector2.zero);
+    //     
+    //     if (hits.Length > 0)
+    //     {
+    //         foreach (var rc in hits)
+    //         {
+    //             if (rc.transform.GetComponent<Interactable>())
+    //             {
+    //                 rc.transform.GetComponent<Interactable>().Interact();
+    //             }
+    //         }
+    //     }
+    // }
 }
