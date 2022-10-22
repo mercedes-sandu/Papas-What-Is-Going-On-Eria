@@ -19,17 +19,9 @@ public class Order : MonoBehaviour
     [SerializeField] private bool _isComplete;
 
     /// <summary>
-    /// Initializes the ingredients list.
-    /// </summary>
-    void Start()
-    {
-        GetIngredients();
-    }
-
-    /// <summary>
     /// Picks a random ingredient from each type of ingredient and adds its prefab to _ingredients.
     /// </summary>
-    private void GetIngredients()
+    public void InitializeOrder()
     {
         foreach (TypeOfIngredient type in TypeOfIngredient.GetValues(typeof(TypeOfIngredient)))
         {
@@ -43,4 +35,10 @@ public class Order : MonoBehaviour
             }
         }
     }
+    
+    /// <summary>
+    /// Returns the ingredients list.
+    /// </summary>
+    /// <returns>The list of necessary ingredients for the order.</returns>
+    public List<GameObject> GetIngredientsList() => _ingredients;
 }
