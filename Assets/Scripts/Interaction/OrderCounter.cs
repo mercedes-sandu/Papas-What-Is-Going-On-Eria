@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Scripts;
 using UnityEngine;
 
 [RequireComponent(typeof(Order))]
@@ -18,17 +19,23 @@ public class OrderCounter : Interactable
     /// <summary>
     /// 
     /// </summary>
-    private List<GameObject> _orderList = new List<GameObject>();
+    private Dictionary<TypeOfIngredient, GameObject> _orderList = new Dictionary<TypeOfIngredient, GameObject>();
 
+    /// <summary>
+    /// 
+    /// </summary>
     void Start()
     {
         _order = GetComponent<Order>();
     }
     
+    /// <summary>
+    /// 
+    /// </summary>
     public override void Interact()
     {
         _order.InitializeOrder();
-        _orderList = _order.GetIngredientsList();
+        _orderList = _order.GetIngredientsDict();
         orderCanvas.GetComponent<OrderCanvas>().UpdateOrder(_orderList);
     }
 }

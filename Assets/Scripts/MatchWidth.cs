@@ -5,22 +5,32 @@ using UnityEngine;
 [ExecuteInEditMode]
 [RequireComponent(typeof(Camera))]
 public class MatchWidth : MonoBehaviour {
+    /// <summary>
+    /// In-world distance between the left and right edges of the screen.
+    /// </summary>
+    public float sceneWidth = 20;
 
-    // Set this to the in-world distance between the left & right edges of your scene.
-    public float sceneWidth = 10;
-
+    /// <summary>
+    /// The main camera.
+    /// </summary>
     Camera _camera;
-    void Start() {
+    
+    /// <summary>
+    /// Initialize the camera component.
+    /// </summary>
+    void Start() 
+    {
         _camera = GetComponent<Camera>();
     }
-
-    // Adjust the camera's height so the desired scene width fits in view
-    // even if the screen/window size changes dynamically.
-    void Update() {
+    
+    /// <summary>
+    /// Adjusts the camera's height so that the desired scene width fits in view, even if the screen/window size
+    /// changes dynamically.
+    /// </summary>
+    void Update() 
+    {
         float unitsPerPixel = sceneWidth / Screen.width;
-
         float desiredHalfHeight = 0.5f * unitsPerPixel * Screen.height;
-
         _camera.orthographicSize = desiredHalfHeight;
     }
 }

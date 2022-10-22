@@ -3,15 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Interactable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - Interactable
   - 
   - 
   - 
@@ -40,4 +41,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3218639489
+    locked: 0
+  - name: Furniture
+    uniqueID: 3491391129
+    locked: 0
+  - name: Player
+    uniqueID: 2429980453
+    locked: 0
+  - name: UI
+    uniqueID: 3695223513
     locked: 0

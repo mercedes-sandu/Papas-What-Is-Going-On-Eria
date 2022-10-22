@@ -11,7 +11,7 @@ public class Order : MonoBehaviour
     /// <summary>
     /// The list of necessary ingredients for this order.
     /// </summary>
-    [SerializeField] private List<GameObject> _ingredients = new List<GameObject>();
+    private Dictionary<TypeOfIngredient, GameObject> _ingredients = new Dictionary<TypeOfIngredient, GameObject>();
 
     /// <summary>
     /// True if the order has been completed, false otherwise.
@@ -29,16 +29,13 @@ public class Order : MonoBehaviour
             var prefabs = resources
                 .Where(x => x.GetComponent<Ingredient>() != null && x.GetComponent<Ingredient>().CanUse())
                 .ToList();
-            if (prefabs.Count != 0)
-            {
-                _ingredients.Add(prefabs[Random.Range(0, prefabs.Count)]);
-            }
+            _ingredients.Add(type, prefabs.Count != 0 ? prefabs[Random.Range(0, prefabs.Count)] : null);
         }
     }
     
     /// <summary>
     /// Returns the ingredients list.
     /// </summary>
-    /// <returns>The list of necessary ingredients for the order.</returns>
-    public List<GameObject> GetIngredientsList() => _ingredients;
+    /// <returns>The dictionary of necessary ingredients for the order.</returns>
+    public Dictionary<TypeOfIngredient, GameObject> GetIngredientsDict() => _ingredients;
 }

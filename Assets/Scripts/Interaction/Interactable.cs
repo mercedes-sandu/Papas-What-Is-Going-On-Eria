@@ -6,26 +6,40 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public abstract class Interactable : MonoBehaviour
 {
+    /// <summary>
+    /// 
+    /// </summary>
     private void Reset()
     {
         GetComponent<BoxCollider2D>().isTrigger = true;
     }
     
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract void Interact();
 
-    // private void OnTriggerEnter2D(Collider2D col)
-    // {
-    //     if (col.CompareTag("Player"))
-    //     {
-    //         col.GetComponent<PlayerControl>().OpenInteractableIcon();
-    //     }
-    // }
-    //
-    // private void OnTriggerExit2D(Collider2D col)
-    // {
-    //     if (col.CompareTag("Player"))
-    //     {
-    //         col.GetComponent<PlayerControl>().CloseInteractableIcon();
-    //     }
-    // }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="col"></param>
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Player"))
+        {
+            col.GetComponent<PlayerControl>().OpenInteractableIcon();
+        }
+    }
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="col"></param>
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.CompareTag("Player"))
+        {
+            col.GetComponent<PlayerControl>().CloseInteractableIcon();
+        }
+    }
 }
