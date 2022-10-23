@@ -43,9 +43,6 @@ public class OrderCanvas : MonoBehaviour
     /// The dictionary of ingredients mapped to their images.
     /// </summary>
     private Dictionary<TypeOfIngredient, Image> _images = new Dictionary<TypeOfIngredient, Image>();
-    
-    // private List<TextMeshProUGUI> _textMeshes = new List<TextMeshProUGUI>();
-    // private List<Image> _images = new List<Image>();
 
     /// <summary>
     /// To be appended to text if there is no ingredient for a particular ingredient type.
@@ -64,12 +61,6 @@ public class OrderCanvas : MonoBehaviour
             _images.Add(type, _ingredientsImages[counter]);
             counter++;
         }
-
-        // for (int i = 0; i < 6; i++)
-        // {
-        //     _textMeshes.Add(_ingredientsTexts[i]);
-        //     _images.Add(_ingredientsImages[i]);
-        // }
         
         gameObject.SetActive(false);
     }
@@ -93,22 +84,6 @@ public class OrderCanvas : MonoBehaviour
             }
         }
 
-        // int counter = 0;
-        // foreach (TypeOfIngredient type in ingredients.Keys)
-        // {
-        //     if (ingredients[type] != null)
-        //     {
-        //         _images[counter].sprite = ingredients[type].GetComponent<SpriteRenderer>().sprite;
-        //     }
-        //     else
-        //     {
-        //         _textMeshes[counter].text = _nullObjectString;
-        //         _images[counter].sprite = null;
-        //     }
-        //
-        //     counter++;
-        // }
-        
         _cookTime.sprite = cookTime switch
         {
             1 => _cookTimes[0],
