@@ -9,38 +9,38 @@ using UnityEngine.UI;
 public class OrderCanvas : MonoBehaviour
 {
     /// <summary>
-    /// 
+    /// The ingredients text objects.
     /// </summary>
     [SerializeField] private TextMeshProUGUI[] _ingredientsTexts;
     
     /// <summary>
-    /// 
+    /// The ingredients images.
     /// </summary>
     [SerializeField] private Image[] _ingredientsImages;
 
     /// <summary>
-    /// 
+    /// The cook time sprites.
     /// </summary>
     [SerializeField] private Sprite[] _cookTimes;
     
     /// <summary>
-    /// 
+    /// The cook time sprite for this order.
     /// </summary>
     [SerializeField] private Image _cookTime;
 
     /// <summary>
-    /// 
+    /// The soda.
     /// </summary>
     [SerializeField] private Image _soda;
     
     /// <summary>
-    /// 
+    /// The dictionary of ingredients mapped to their text objects.
     /// </summary>
     private Dictionary<TypeOfIngredient, TextMeshProUGUI> _textMeshes =
         new Dictionary<TypeOfIngredient, TextMeshProUGUI>();
     
     /// <summary>
-    /// 
+    /// The dictionary of ingredients mapped to their images.
     /// </summary>
     private Dictionary<TypeOfIngredient, Image> _images = new Dictionary<TypeOfIngredient, Image>();
     

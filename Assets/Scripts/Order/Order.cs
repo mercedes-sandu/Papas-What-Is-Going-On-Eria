@@ -14,12 +14,12 @@ public class Order : MonoBehaviour
     private Dictionary<TypeOfIngredient, GameObject> _ingredients = new Dictionary<TypeOfIngredient, GameObject>();
 
     /// <summary>
-    /// 
+    /// The cook time for the meat for this order.
     /// </summary>
     private int _cookTime;
 
     /// <summary>
-    /// 
+    /// The soda for this order.
     /// </summary>
     private GameObject _soda;
 
@@ -56,20 +56,20 @@ public class Order : MonoBehaviour
     public Dictionary<TypeOfIngredient, GameObject> GetIngredientsDict() => _ingredients;
     
     /// <summary>
-    /// 
+    /// Returns the cook time for the meat for this order.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>The cook time.</returns>
     public int GetCookTime() => _cookTime;
     
     /// <summary>
-    /// 
+    /// Returns the soda object for this order.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>The soda.</returns>
     public GameObject GetSoda() => _soda;
     
     /// <summary>
-    /// 
+    /// Returns whether this order has been completed.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>True if this order has been completed, false otherwise.</returns>
     public bool IsComplete() => isComplete;
 }

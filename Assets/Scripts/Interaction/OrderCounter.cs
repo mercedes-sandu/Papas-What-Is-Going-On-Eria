@@ -7,27 +7,17 @@ using UnityEngine;
 public class OrderCounter : MonoBehaviour, IInteractable
 {
     /// <summary>
-    /// 
-    /// </summary>
-    [SerializeField] private string prompt;
-    
-    /// <summary>
-    /// 
-    /// </summary>
-    public string InteractionPrompt => prompt;
-    
-    /// <summary>
-    /// 
+    /// The order canvas.
     /// </summary>
     [SerializeField] private GameObject orderCanvas;
     
     /// <summary>
-    /// 
+    /// The current order.
     /// </summary>
     private Order _order;
 
     /// <summary>
-    /// 
+    /// Gets the order.
     /// </summary>
     void Start()
     {
@@ -35,7 +25,7 @@ public class OrderCounter : MonoBehaviour, IInteractable
     }
     
     /// <summary>
-    /// 
+    /// Initializes the order and calls for the UI to be updated.
     /// </summary>
     public bool Interact(Interactor interactor)
     {

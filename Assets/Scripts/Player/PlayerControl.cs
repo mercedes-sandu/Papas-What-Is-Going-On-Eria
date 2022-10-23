@@ -55,11 +55,6 @@ public class PlayerControl : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 dir = Vector2.zero;
-        //
-        // if (Input.GetKeyDown(KeyCode.E))
-        // {
-        //     CheckInteraction();
-        // }
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
