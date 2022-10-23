@@ -21,7 +21,7 @@ public class OrderCanvas : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
-    [SerializeField] private Image[] _cookTimes;
+    [SerializeField] private Sprite[] _cookTimes;
     
     /// <summary>
     /// 
@@ -43,6 +43,9 @@ public class OrderCanvas : MonoBehaviour
     /// 
     /// </summary>
     private Dictionary<TypeOfIngredient, Image> _images = new Dictionary<TypeOfIngredient, Image>();
+    
+    // private List<TextMeshProUGUI> _textMeshes = new List<TextMeshProUGUI>();
+    // private List<Image> _images = new List<Image>();
 
     /// <summary>
     /// To be appended to text if there is no ingredient for a particular ingredient type.
@@ -61,6 +64,13 @@ public class OrderCanvas : MonoBehaviour
             _images.Add(type, _ingredientsImages[counter]);
             counter++;
         }
+
+        // for (int i = 0; i < 6; i++)
+        // {
+        //     _textMeshes.Add(_ingredientsTexts[i]);
+        //     _images.Add(_ingredientsImages[i]);
+        // }
+        
         gameObject.SetActive(false);
     }
 
@@ -74,7 +84,6 @@ public class OrderCanvas : MonoBehaviour
         {
             if (ingredients[type] != null)
             {
-                _textMeshes[type].text = ingredients[type].name;
                 _images[type].sprite = ingredients[type].GetComponent<SpriteRenderer>().sprite;
             }
             else
@@ -83,13 +92,29 @@ public class OrderCanvas : MonoBehaviour
                 _images[type].sprite = null;
             }
         }
+
+        // int counter = 0;
+        // foreach (TypeOfIngredient type in ingredients.Keys)
+        // {
+        //     if (ingredients[type] != null)
+        //     {
+        //         _images[counter].sprite = ingredients[type].GetComponent<SpriteRenderer>().sprite;
+        //     }
+        //     else
+        //     {
+        //         _textMeshes[counter].text = _nullObjectString;
+        //         _images[counter].sprite = null;
+        //     }
+        //
+        //     counter++;
+        // }
         
         _cookTime.sprite = cookTime switch
         {
-            1 => _cookTimes[0].sprite,
-            2 => _cookTimes[1].sprite,
-            3 => _cookTimes[2].sprite,
-            4 => _cookTimes[3].sprite,
+            1 => _cookTimes[0],
+            2 => _cookTimes[1],
+            3 => _cookTimes[2],
+            4 => _cookTimes[3],
             _ => null
         };
         

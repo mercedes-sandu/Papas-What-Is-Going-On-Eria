@@ -26,25 +26,26 @@ public class Order : MonoBehaviour
     /// <summary>
     /// True if the order has been completed, false otherwise.
     /// </summary>
-    [SerializeField] private bool _isComplete;
+    [SerializeField] private bool isComplete;
 
     /// <summary>
     /// Picks a random ingredient from each type of ingredient and adds its prefab to _ingredients.
     /// </summary>
     public void InitializeOrder()
     {
+        isComplete = false;
         foreach (TypeOfIngredient type in TypeOfIngredient.GetValues(typeof(TypeOfIngredient)))
         {
-            var resources = Resources.LoadAll<GameObject>("Prefabs/" + type);
+            var resources = Resources.LoadAll<GameObject>("Ingredient Prefabs/" + type);
             var prefabs = resources
                 .Where(x => x.GetComponent<Ingredient>() != null && x.GetComponent<Ingredient>().CanUse())
                 .ToList();
-            _ingredients.Add(type, prefabs.Count != 0 ? prefabs[Random.Range(0, prefabs.Count)] : null);
+            _ingredients[type] = prefabs.Count != 0 ? prefabs[Random.Range(0, prefabs.Count)] : null;
         }
 
         _cookTime = Random.Range(1, 5);
         
-        var sodas = Resources.LoadAll<GameObject>("Prefabs/Soda");
+        var sodas = Resources.LoadAll<GameObject>("Ingredient Prefabs/Soda");
         _soda = sodas[Random.Range(0, sodas.Length)];
     }
     
@@ -70,5 +71,5 @@ public class Order : MonoBehaviour
     /// 
     /// </summary>
     /// <returns></returns>
-    public bool IsComplete() => _isComplete;
+    public bool IsComplete() => isComplete;
 }

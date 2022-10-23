@@ -4,12 +4,22 @@ using Scripts;
 using UnityEngine;
 
 [RequireComponent(typeof(Order))]
-public class OrderCounter : Interactable
+public class OrderCounter : MonoBehaviour, IInteractable
 {
     /// <summary>
     /// 
     /// </summary>
-    [SerializeField] private Canvas orderCanvas;
+    [SerializeField] private string prompt;
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    public string InteractionPrompt => prompt;
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField] private GameObject orderCanvas;
     
     /// <summary>
     /// 
@@ -27,10 +37,21 @@ public class OrderCounter : Interactable
     /// <summary>
     /// 
     /// </summary>
-    public override void Interact()
+    public bool Interact(Interactor interactor)
     {
+        Debug.Log("Interacting with order counter");
         _order.InitializeOrder();
-        orderCanvas.GetComponent<OrderCanvas>().UpdateOrder(_order.GetIngredientsDict(), _order.GetCookTime(), 
-            _order.GetSoda());
+        string result = "";
+        foreach (var item in _order.GetIngredientsDict().Values)
+        {
+            result += item.name + " ";
+        }
+        Debug.Log("ingredients: " + result);
+        Debug.Log("cook time: " + _order.GetCookTime());
+        Debug.Log("soda: " + _order.GetSoda().name);
+        var canvas = orderCanvas.GetComponent<OrderCanvas>();
+        canvas.UpdateOrder(_order.GetIngredientsDict(), _order.GetCookTime(), _order.GetSoda());
+        // orderCanvas.gameObject.SetActive(true);
+        return true;
     }
 }
