@@ -28,11 +28,14 @@ public class Order : MonoBehaviour
     /// </summary>
     [SerializeField] private bool isComplete;
 
+    /// <summary>
+    /// Subscribes to GameEvents.
+    /// </summary>
     void Awake()
     {
         
     }
-
+    
     /// <summary>
     /// Picks a random ingredient from each type of ingredient and adds its prefab to _ingredients.
     /// </summary>
@@ -78,11 +81,18 @@ public class Order : MonoBehaviour
     /// <returns>True if this order has been completed, false otherwise.</returns>
     public bool IsComplete() => isComplete;
 
+    /// <summary>
+    /// Completes the order.
+    /// </summary>
+    /// <param name="order">The current order.</param>
     private void CompleteOrder(Order order)
     {
         
     }
     
+    /// <summary>
+    /// Unsubscribes to GameEvents.
+    /// </summary>
     void OnDestroy()
     {
         

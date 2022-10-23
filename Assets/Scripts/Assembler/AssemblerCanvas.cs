@@ -6,42 +6,42 @@ using UnityEngine.UI;
 public class AssemblerCanvas : MonoBehaviour
 {
     /// <summary>
-    /// 
+    /// The cooked meat from the cooker.
     /// </summary>
     [SerializeField] private GameObject cookedMeat;
     
     /// <summary>
-    /// 
+    /// The plate onto which the burger will be assembeld.
     /// </summary>
     [SerializeField] private GameObject plate;
 
     /// <summary>
-    /// 
+    /// The table (background).
     /// </summary>
     [SerializeField] private GameObject table;
 
     /// <summary>
-    /// 
+    /// The center x-position of the plate.
     /// </summary>
     private float _centerX;
     
     /// <summary>
-    /// 
+    /// The list of items stacked onto the plate.
     /// </summary>
     private List<GameObject> _stackedItems = new List<GameObject>();
 
     /// <summary>
-    /// 
+    /// True if the player is currently placing an object, false otherwise.
     /// </summary>
     private bool _placingObject = false;
 
     /// <summary>
-    /// 
+    /// The currently held game object.
     /// </summary>
     private GameObject _currentHeldObject;
 
     /// <summary>
-    /// 
+    /// Initializes necessary components and sets the canvas to be inactive.
     /// </summary>
     void Start()
     {
@@ -55,6 +55,9 @@ public class AssemblerCanvas : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Listens for a mouse click to place the currently held object.
+    /// </summary>
     void Update()
     {
         if (_placingObject)
@@ -62,6 +65,7 @@ public class AssemblerCanvas : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 FollowAndPlace.PlaceObject(_currentHeldObject, plate);
+                _stackedItems.Add(_currentHeldObject);
                 _currentHeldObject = null;
                 _placingObject = false;
             }
@@ -69,9 +73,9 @@ public class AssemblerCanvas : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Creates a semi-transparent item that will follow the cursor.
     /// </summary>
-    /// <param name="item"></param>
+    /// <param name="item">The item to be created.</param>
     public void CreateItem(GameObject item)
     {
         var newItem = new GameObject(item.name, typeof(RectTransform), typeof(Image), 
@@ -86,7 +90,7 @@ public class AssemblerCanvas : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Completes the food order to be scored.
     /// </summary>
     public void CompleteFoodOrder()
     {
@@ -94,7 +98,7 @@ public class AssemblerCanvas : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Closes the assembler canvas.
     /// </summary>
     public void CloseCanvas()
     {

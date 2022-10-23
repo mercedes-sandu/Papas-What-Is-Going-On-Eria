@@ -27,6 +27,8 @@ public class OrderCounter : MonoBehaviour, IInteractable
     /// <summary>
     /// Initializes the order and calls for the UI to be updated.
     /// </summary>
+    /// <param name="interactor">The interactor component.</param>
+    /// <returns>True if the interaction was successful, false otherwise.</returns>
     public bool Interact(Interactor interactor)
     {
         _order.InitializeOrder();

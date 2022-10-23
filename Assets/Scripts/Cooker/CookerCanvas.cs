@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class CookerCanvas : MonoBehaviour
 {
     /// <summary>
-    /// 
+    /// An instance of the cooker UI canvas that is accessible by all classes.
     /// </summary>
     public static CookerCanvas Instance = null;
     
@@ -22,22 +22,22 @@ public class CookerCanvas : MonoBehaviour
     [SerializeField] private Sprite[] cookTimeImages;
 
     /// <summary>
-    /// 
+    /// The displayed cooking time.
     /// </summary>
     [SerializeField] private Image cookTimeImage;
     
     /// <summary>
-    /// 
+    /// The watch hand object.
     /// </summary>
     [SerializeField] private GameObject watchHand;
     
     /// <summary>
-    /// 
+    /// The meat that has been cooked.
     /// </summary>
     [SerializeField] private Image cookedMeat;
 
     /// <summary>
-    /// 
+    /// The list of color filters that change the appearance of the cooking meat.
     /// </summary>
     private readonly Color32[] _grillColors =
     {
@@ -49,15 +49,18 @@ public class CookerCanvas : MonoBehaviour
     };
 
     /// <summary>
-    /// 
+    /// True if the object has been placed, false otherwise.
     /// </summary>
     private bool _placed = false;
     
     /// <summary>
-    /// 
+    /// The time that the object has been placed.
     /// </summary>
     private float _grillStartTime;
 
+    /// <summary>
+    /// Initializes components and variables.
+    /// </summary>
     void Awake()
     {
         if (!Instance)
@@ -71,16 +74,16 @@ public class CookerCanvas : MonoBehaviour
     }
     
     /// <summary>
-    /// 
+    /// Sets the UI canvas to be inactive.
     /// </summary>
     void Start()
     {
-        gameObject.SetActive(false);
         grillPoint.color = new Color(1, 1, 1, 0);
+        gameObject.SetActive(false);
     }
 
     /// <summary>
-    /// 
+    /// Updates the state of the cooking meat and checks to close the canvas.
     /// </summary>
     void Update()
     {
@@ -116,9 +119,9 @@ public class CookerCanvas : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Places the meat object specified on the grill.
     /// </summary>
-    /// <param name="meat"></param>
+    /// <param name="meat">The meat.</param>
     public void PlaceMeat(GameObject meat)
     {
         grillPoint.sprite = meat.GetComponent<SpriteRenderer>().sprite;
@@ -128,7 +131,7 @@ public class CookerCanvas : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Called when the meat is clicked.
     /// </summary>
     public void OnMeatClick()
     {
@@ -137,13 +140,13 @@ public class CookerCanvas : MonoBehaviour
     }
     
     /// <summary>
-    /// 
+    /// Returns the cooked meat image.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>Cooked meat image.</returns>
     public Image GetCookedMeat() => cookedMeat;
 
     /// <summary>
-    /// 
+    /// Closes the cooker canvas.
     /// </summary>
     public void CloseCanvas()
     {

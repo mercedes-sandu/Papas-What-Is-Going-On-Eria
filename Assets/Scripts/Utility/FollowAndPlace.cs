@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class FollowAndPlace : MonoBehaviour
 {
+    /// <summary>
+    /// True if the object has been placed, false otherwise.
+    /// </summary>
     private static bool _placedObject = false;
     
     /// <summary>
-    /// 
+    /// Checks if the object has been placed.
     /// </summary>
     void Update()
     {
@@ -19,10 +22,10 @@ public class FollowAndPlace : MonoBehaviour
     }
     
     /// <summary>
-    /// 
+    /// Places the specified object on the plate.
     /// </summary>
-    /// <param name="obj"></param>
-    /// <param name="plate"></param>
+    /// <param name="obj">The object to be placed.</param>
+    /// <param name="plate">The plate.</param>
     public static void PlaceObject(GameObject obj, GameObject plate)
     {
         _placedObject = true;
