@@ -146,7 +146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &385917990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -613,10 +613,6 @@ PrefabInstance:
     - target: {fileID: 1804450391068782389, guid: 72c7c683f5de6594185509c5c961f90a, type: 3}
       propertyPath: m_Name
       value: Assembler Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 1804450391068782389, guid: 72c7c683f5de6594185509c5c961f90a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1804450391068782393, guid: 72c7c683f5de6594185509c5c961f90a, type: 3}
       propertyPath: m_Pivot.x
@@ -1135,10 +1131,6 @@ PrefabInstance:
     - target: {fileID: 8907773005391468299, guid: 1aeed19435988be46a183056d6889acd, type: 3}
       propertyPath: m_Name
       value: Cooker Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 8907773005391468299, guid: 1aeed19435988be46a183056d6889acd, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1aeed19435988be46a183056d6889acd, type: 3}

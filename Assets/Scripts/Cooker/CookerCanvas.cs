@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class CookerCanvas : MonoBehaviour
@@ -34,7 +35,12 @@ public class CookerCanvas : MonoBehaviour
     /// <summary>
     /// The meat that has been cooked.
     /// </summary>
-    [SerializeField] private Image cookedMeat;
+    [SerializeField] private GameObject cookedMeat;
+
+    /// <summary>
+    /// The color at which the meet has been cooked.
+    /// </summary>
+    [SerializeField] private Color cookedColor;
 
     /// <summary>
     /// The list of color filters that change the appearance of the cooking meat.
@@ -52,6 +58,11 @@ public class CookerCanvas : MonoBehaviour
     /// True if the object has been placed, false otherwise.
     /// </summary>
     private bool _placed = false;
+
+    /// <summary>
+    /// True if the cooked meat has been clicked, false otherwise.
+    /// </summary>
+    private bool _meatCliked = false;
     
     /// <summary>
     /// The time that the object has been placed.
@@ -92,7 +103,7 @@ public class CookerCanvas : MonoBehaviour
             CloseCanvas();
         }
         
-        if (_placed)
+        if (_placed && !_meatCliked)
         {
             // Gradually change the color of the meat.
             grillPoint.color = Color.Lerp(_grillColors[0], _grillColors[3],
@@ -135,15 +146,24 @@ public class CookerCanvas : MonoBehaviour
     /// </summary>
     public void OnMeatClick()
     {
-        cookedMeat.sprite = grillPoint.sprite;
-        cookedMeat.color = grillPoint.color;
+        _meatCliked = true;
+        cookedColor = grillPoint.color;
+        cookedMeat = grillPoint.gameObject;
+        grillPoint.color = new Color(1, 1, 1, 0);
+        Destroy(cookedMeat.GetComponent<EventTrigger>());
     }
     
     /// <summary>
     /// Returns the cooked meat image.
     /// </summary>
     /// <returns>Cooked meat image.</returns>
-    public Image GetCookedMeat() => cookedMeat;
+    public GameObject GetCookedMeat() => cookedMeat;
+    
+    /// <summary>
+    /// Returns the cooked meat color.
+    /// </summary>
+    /// <returns>Cooked meat color.</returns>
+    public Color GetCookedColor() => cookedColor;
 
     /// <summary>
     /// Closes the cooker canvas.

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class AssemblerCanvas : MonoBehaviour
@@ -46,12 +47,6 @@ public class AssemblerCanvas : MonoBehaviour
     void Start()
     {
         _centerX = plate.transform.position.x; // TODO: check if this is actually correct
-        // var meat = CookerCanvas.Instance.GetCookedMeat();
-        // if (meat != null)
-        // {
-        //     cookedMeat.GetComponent<Image>().sprite = CookerCanvas.Instance.GetCookedMeat().sprite;
-        //     cookedMeat.GetComponent<Image>().color = CookerCanvas.Instance.GetCookedMeat().color;
-        // }
         gameObject.SetActive(false);
     }
 
@@ -69,6 +64,20 @@ public class AssemblerCanvas : MonoBehaviour
                 _currentHeldObject = null;
                 _placingObject = false;
             }
+        }
+    }
+
+    /// <summary>
+    /// Sets the cooked meat to the one from the cooker.
+    /// </summary>
+    public void AcquireMeat()
+    {
+        var meat = CookerCanvas.Instance.GetCookedMeat();
+        if (meat != null)
+        {
+            Destroy(cookedMeat.GetComponent<EventTrigger>());
+            cookedMeat.GetComponent<Image>().sprite = CookerCanvas.Instance.GetCookedMeat().GetComponent<Image>().sprite;
+            cookedMeat.GetComponent<Image>().color = CookerCanvas.Instance.GetCookedColor();
         }
     }
 

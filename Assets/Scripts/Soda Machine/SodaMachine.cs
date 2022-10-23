@@ -16,6 +16,7 @@ public class SodaMachine : MonoBehaviour, IInteractable
     /// <returns>True if the interaction was successful, false otherwise.</returns>
     public bool Interact(Interactor interactor)
     {
+        Debug.Log("Interacted with soda machine.");
         sodaMachineCanvas.SetActive(true);
         return true;
     }
