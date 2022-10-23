@@ -86,7 +86,7 @@ public class CookerCanvas : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            gameObject.SetActive(false);
+            CloseCanvas();
         }
         
         if (_placed)
@@ -141,4 +141,12 @@ public class CookerCanvas : MonoBehaviour
     /// </summary>
     /// <returns></returns>
     public Image GetCookedMeat() => cookedMeat;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void CloseCanvas()
+    {
+        gameObject.SetActive(false);
+    }
 }
