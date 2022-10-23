@@ -34,7 +34,7 @@ public class Interactor : MonoBehaviour
     /// <summary>
     /// Consistently checks for interactable objects.
     /// </summary>
-    void FixedUpdate()
+    void Update()
     {
         _numFound = Physics2D.OverlapCircleNonAlloc(_interactionPoint.position, _interactionPointRadius, 
             _colliders, _interactableMask);
