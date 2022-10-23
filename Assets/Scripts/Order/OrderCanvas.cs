@@ -11,27 +11,27 @@ public class OrderCanvas : MonoBehaviour
     /// <summary>
     /// The ingredients text objects.
     /// </summary>
-    [SerializeField] private TextMeshProUGUI[] _ingredientsTexts;
+    [SerializeField] private TextMeshProUGUI[] ingredientsTexts;
     
     /// <summary>
     /// The ingredients images.
     /// </summary>
-    [SerializeField] private Image[] _ingredientsImages;
+    [SerializeField] private Image[] ingredientsImages;
 
     /// <summary>
     /// The cook time sprites.
     /// </summary>
-    [SerializeField] private Sprite[] _cookTimes;
+    [SerializeField] private Sprite[] cookTimeImages;
     
     /// <summary>
     /// The cook time sprite for this order.
     /// </summary>
-    [SerializeField] private Image _cookTime;
+    [SerializeField] private Image cookTimeImage;
 
     /// <summary>
     /// The soda.
     /// </summary>
-    [SerializeField] private Image _soda;
+    [SerializeField] private Image sodaImage;
     
     /// <summary>
     /// The dictionary of ingredients mapped to their text objects.
@@ -57,8 +57,8 @@ public class OrderCanvas : MonoBehaviour
         int counter = 0;
         foreach (TypeOfIngredient type in TypeOfIngredient.GetValues(typeof(TypeOfIngredient)))
         {
-            _textMeshes.Add(type, _ingredientsTexts[counter]);
-            _images.Add(type, _ingredientsImages[counter]);
+            _textMeshes.Add(type, ingredientsTexts[counter]);
+            _images.Add(type, ingredientsImages[counter]);
             counter++;
         }
         
@@ -80,20 +80,20 @@ public class OrderCanvas : MonoBehaviour
             else
             {
                 _textMeshes[type].text = _nullObjectString;
-                _images[type].sprite = null;
+                _images[type].color = new Color(1, 1, 1, 0);
             }
         }
 
-        _cookTime.sprite = cookTime switch
+        cookTimeImage.sprite = cookTime switch
         {
-            1 => _cookTimes[0],
-            2 => _cookTimes[1],
-            3 => _cookTimes[2],
-            4 => _cookTimes[3],
+            1 => cookTimeImages[0],
+            2 => cookTimeImages[1],
+            3 => cookTimeImages[2],
+            4 => cookTimeImages[3],
             _ => null
         };
         
-        _soda.sprite = soda.GetComponent<SpriteRenderer>().sprite;
+        sodaImage.sprite = soda.GetComponent<SpriteRenderer>().sprite;
         
         gameObject.SetActive(true);
     }

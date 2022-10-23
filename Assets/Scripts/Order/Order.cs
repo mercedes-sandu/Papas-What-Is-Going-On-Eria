@@ -28,6 +28,11 @@ public class Order : MonoBehaviour
     /// </summary>
     [SerializeField] private bool isComplete;
 
+    void Awake()
+    {
+        
+    }
+
     /// <summary>
     /// Picks a random ingredient from each type of ingredient and adds its prefab to _ingredients.
     /// </summary>
@@ -72,4 +77,14 @@ public class Order : MonoBehaviour
     /// </summary>
     /// <returns>True if this order has been completed, false otherwise.</returns>
     public bool IsComplete() => isComplete;
+
+    private void CompleteOrder(Order order)
+    {
+        
+    }
+    
+    void OnDestroy()
+    {
+        
+    }
 }
