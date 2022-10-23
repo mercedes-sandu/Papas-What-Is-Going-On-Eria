@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cooker : MonoBehaviour, IInteractable
+public class Assembler : MonoBehaviour, IInteractable
 {
-    [SerializeField] private GameObject cookerCanvas;
+    [SerializeField] private GameObject assemblerCanvas;
     
     /// <summary>
     /// 
@@ -13,7 +13,7 @@ public class Cooker : MonoBehaviour, IInteractable
     /// <returns></returns>
     public bool Interact(Interactor interactor)
     {
-        cookerCanvas.SetActive(true);
+        assemblerCanvas.SetActive(true);
         return true;
     }
 }
