@@ -23,7 +23,8 @@ public class GameMaster : MonoBehaviour
         if (!Instance)
         {
             Instance = this;
-        } else if (Instance != this)
+        } 
+        else if (Instance != this)
         {
             Destroy(gameObject);
         }

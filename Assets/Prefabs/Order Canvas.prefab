@@ -2089,7 +2089,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &4300654234122431015
 MonoBehaviour:
@@ -2143,27 +2143,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c442dc8223be4ff4b6b458cedec44ae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ingredientsTexts:
+  ingredientsTexts:
   - {fileID: 4300654233736922043}
   - {fileID: 4300654232664383336}
   - {fileID: 4300654233407933837}
   - {fileID: 4300654232397433288}
   - {fileID: 4300654233604951099}
   - {fileID: 4300654233125360716}
-  _ingredientsImages:
+  ingredientsImages:
   - {fileID: 4300654232856780540}
   - {fileID: 4300654233942663749}
   - {fileID: 4300654233921376377}
   - {fileID: 4300654232407143091}
   - {fileID: 4300654234211802951}
   - {fileID: 4300654232210610986}
-  _cookTimes:
+  cookTimeImages:
   - {fileID: 21300000, guid: fb839efeb2763b649805d264b74eae77, type: 3}
   - {fileID: 21300000, guid: 34b581ffd10f1d948a03d4dd6bad53b5, type: 3}
   - {fileID: 21300000, guid: c78251a3c6f7d144f88097364d3c37af, type: 3}
   - {fileID: 21300000, guid: 0765852ce5b29e34f95f9f384b1eaa13, type: 3}
-  _cookTime: {fileID: 4300654233815852063}
-  _soda: {fileID: 4300654232646015450}
+  cookTimeImage: {fileID: 4300654233815852063}
+  sodaImage: {fileID: 4300654232646015450}
 --- !u!1 &4300654234157443595
 GameObject:
   m_ObjectHideFlags: 0
