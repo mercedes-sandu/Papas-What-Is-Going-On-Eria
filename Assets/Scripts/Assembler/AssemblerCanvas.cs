@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Scripts;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -22,9 +23,9 @@ public class AssemblerCanvas : MonoBehaviour
     [SerializeField] private GameObject plate;
 
     /// <summary>
-    /// The table (background).
+    /// The ghost object which follows the player's cursor.
     /// </summary>
-    [SerializeField] private GameObject table;
+    [SerializeField] private GameObject ghostObject;
 
     /// <summary>
     /// The center x-position of the plate.
@@ -37,9 +38,14 @@ public class AssemblerCanvas : MonoBehaviour
     private bool _placingObject = false;
 
     /// <summary>
-    /// The currently held game object.
+    /// The name of the object that was placed.
     /// </summary>
-    private GameObject _currentHeldObject;
+    private string _nameOfPlacedObject = "";
+
+    /// <summary>
+    /// The type of the currently held ingredient.
+    /// </summary>
+    private TypeOfIngredient _currentIngredientType = TypeOfIngredient.None;
 
     /// <summary>
     /// Initializes necessary components and sets the canvas to be inactive.
@@ -47,11 +53,12 @@ public class AssemblerCanvas : MonoBehaviour
     void Start()
     {
         _centerX = plate.transform.position.x; // TODO: check if this is actually correct
+        ghostObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
         gameObject.SetActive(false);
     }
 
     /// <summary>
-    /// Listens for a mouse click to place the currently held object.
+    /// Moves the ghost object to the mouse pointer and listens for a mouse click to place the currently held object.
     /// </summary>
     void Update()
     {
@@ -59,18 +66,21 @@ public class AssemblerCanvas : MonoBehaviour
         {
             CloseCanvas();
         }
-        
-        if (_placingObject)
+
+        ghostObject.GetComponent<Image>().color = _placingObject ? new Color(1, 1, 1, 0.5f) 
+            : new Color(1, 1, 1, 0);
+
+        ghostObject.transform.position = Input.mousePosition;
+
+        if (_placingObject && Input.GetMouseButtonDown(0))
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                FollowAndPlace.PlaceObject(_currentHeldObject, plate);
-                assembler.AddItem(_currentHeldObject);
-                Debug.Log("Placed object: " + _currentHeldObject.name);
-                _currentHeldObject = null;
-                Debug.Log("Current held object: " + _currentHeldObject);
-                _placingObject = false;
-            }
+            _placingObject = false;
+            var placedObject = Instantiate(ghostObject, ghostObject.transform.position, Quaternion.identity,
+                plate.transform);
+            placedObject.name = _nameOfPlacedObject;
+            placedObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            assembler.AddItem(placedObject, _currentIngredientType);
+            _currentIngredientType = TypeOfIngredient.None;
         }
     }
 
@@ -94,15 +104,10 @@ public class AssemblerCanvas : MonoBehaviour
     /// <param name="item">The item to be created.</param>
     public void CreateItem(GameObject item)
     {
-        var newItem = new GameObject(item.name, typeof(RectTransform), typeof(Image), 
-            typeof(FollowAndPlace));
-        newItem.GetComponent<RectTransform>().sizeDelta = new Vector2(500, 500);
-        newItem.GetComponent<Image>().sprite = item.GetComponent<SpriteRenderer>().sprite;
-        newItem.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
-        Instantiate(newItem, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity, 
-            table.transform);
-        _currentHeldObject = newItem;
-        Debug.Log("Current held object: " + _currentHeldObject);
+        ghostObject.GetComponent<Image>().sprite = item.GetComponent<SpriteRenderer>().sprite;
+        ghostObject.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
+        _nameOfPlacedObject = item.name;
+        _currentIngredientType = item.GetComponent<Ingredient>().GetTypeOfIngredient();
         _placingObject = true;
     }
 

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Scripts;
 using UnityEngine;
 
 public class Assembler : MonoBehaviour, IInteractable
@@ -12,7 +14,8 @@ public class Assembler : MonoBehaviour, IInteractable
     /// <summary>
     /// The list of currently stacked items in the assembler canvas.
     /// </summary>
-    [SerializeField] private List<GameObject> _stackedItems = new List<GameObject>(); 
+    [SerializeField] private List<Tuple<GameObject, TypeOfIngredient>> _stackedItems
+        = new List<Tuple<GameObject, TypeOfIngredient>>();
     
     /// <summary>
     /// Calls for the UI to be updated.
@@ -27,19 +30,20 @@ public class Assembler : MonoBehaviour, IInteractable
         canvas.AcquireMeat();
         return true;
     }
-   
+
     /// <summary>
     /// Adds the specified item to the list of currently stacked items in the assembler canvas.
     /// </summary>
     /// <param name="item">The item to be added.</param>
-    public void AddItem(GameObject item)
+    /// <param name="type">The ingredient type of the item to be added.</param>
+    public void AddItem(GameObject item, TypeOfIngredient type)
     {
-        _stackedItems.Add(item);
+        _stackedItems.Add(new Tuple<GameObject, TypeOfIngredient>(item, type));
     }
     
     /// <summary>
     /// Returns the list of currently stacked items in the assembler canvas.
     /// </summary>
     /// <returns>The list of stacked items.</returns>
-    public List<GameObject> GetStackedItems() => _stackedItems;
+    public List<Tuple<GameObject, TypeOfIngredient>> GetStackedItems() => _stackedItems;
 }

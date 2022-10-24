@@ -5,6 +5,6 @@
     /// </summary>
     public enum TypeOfIngredient
     {
-        BottomBun, Meat, Dairy, Vegetable, Condiment, TopBun
+        BottomBun, Meat, Dairy, Vegetable, Condiment, TopBun, None
     }
 }

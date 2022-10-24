@@ -21,4 +21,10 @@ public class Ingredient : MonoBehaviour
     /// </summary>
     /// <returns>True if the ingredient can be used, false otherwise.</returns>
     public bool CanUse() => _canUse;
+
+    /// <summary>
+    /// Returns the ingredient type for this object.
+    /// </summary>
+    /// <returns>The TypeOfIngredient.</returns>
+    public TypeOfIngredient GetTypeOfIngredient() => _ingredient;
 }
