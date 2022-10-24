@@ -85,7 +85,7 @@ public class Order : MonoBehaviour
     /// Completes the order.
     /// </summary>
     /// <param name="order">The current order.</param>
-    private void CompleteOrder(Order order)
+    public static void CompleteOrder(List<GameObject> order)
     {
         
     }

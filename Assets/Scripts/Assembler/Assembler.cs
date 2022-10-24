@@ -8,6 +8,11 @@ public class Assembler : MonoBehaviour, IInteractable
     /// The UI canvas corresponding to the assembler.
     /// </summary>
     [SerializeField] private GameObject assemblerCanvas;
+
+    /// <summary>
+    /// The list of currently stacked items in the assembler canvas.
+    /// </summary>
+    [SerializeField] private List<GameObject> _stackedItems = new List<GameObject>(); 
     
     /// <summary>
     /// Calls for the UI to be updated.
@@ -22,4 +27,19 @@ public class Assembler : MonoBehaviour, IInteractable
         canvas.AcquireMeat();
         return true;
     }
+   
+    /// <summary>
+    /// Adds the specified item to the list of currently stacked items in the assembler canvas.
+    /// </summary>
+    /// <param name="item">The item to be added.</param>
+    public void AddItem(GameObject item)
+    {
+        _stackedItems.Add(item);
+    }
+    
+    /// <summary>
+    /// Returns the list of currently stacked items in the assembler canvas.
+    /// </summary>
+    /// <returns>The list of stacked items.</returns>
+    public List<GameObject> GetStackedItems() => _stackedItems;
 }

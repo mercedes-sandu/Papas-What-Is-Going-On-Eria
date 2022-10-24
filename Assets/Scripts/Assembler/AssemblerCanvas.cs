@@ -7,12 +7,17 @@ using UnityEngine.UI;
 public class AssemblerCanvas : MonoBehaviour
 {
     /// <summary>
+    /// The assembler in the scene.
+    /// </summary>
+    [SerializeField] private Assembler assembler;
+    
+    /// <summary>
     /// The cooked meat from the cooker.
     /// </summary>
     [SerializeField] private GameObject cookedMeat;
     
     /// <summary>
-    /// The plate onto which the burger will be assembeld.
+    /// The plate onto which the burger will be assembled.
     /// </summary>
     [SerializeField] private GameObject plate;
 
@@ -25,11 +30,6 @@ public class AssemblerCanvas : MonoBehaviour
     /// The center x-position of the plate.
     /// </summary>
     private float _centerX;
-    
-    /// <summary>
-    /// The list of items stacked onto the plate.
-    /// </summary>
-    private List<GameObject> _stackedItems = new List<GameObject>();
 
     /// <summary>
     /// True if the player is currently placing an object, false otherwise.
@@ -55,13 +55,20 @@ public class AssemblerCanvas : MonoBehaviour
     /// </summary>
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseCanvas();
+        }
+        
         if (_placingObject)
         {
             if (Input.GetMouseButtonDown(0))
             {
                 FollowAndPlace.PlaceObject(_currentHeldObject, plate);
-                _stackedItems.Add(_currentHeldObject);
+                assembler.AddItem(_currentHeldObject);
+                Debug.Log("Placed object: " + _currentHeldObject.name);
                 _currentHeldObject = null;
+                Debug.Log("Current held object: " + _currentHeldObject);
                 _placingObject = false;
             }
         }
@@ -95,6 +102,7 @@ public class AssemblerCanvas : MonoBehaviour
         Instantiate(newItem, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity, 
             table.transform);
         _currentHeldObject = newItem;
+        Debug.Log("Current held object: " + _currentHeldObject);
         _placingObject = true;
     }
 
@@ -103,7 +111,7 @@ public class AssemblerCanvas : MonoBehaviour
     /// </summary>
     public void CompleteFoodOrder()
     {
-        
+        Order.CompleteOrder(assembler.GetStackedItems());
     }
 
     /// <summary>

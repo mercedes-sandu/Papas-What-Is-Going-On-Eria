@@ -527,6 +527,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1449096850 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9134776264498542464, guid: a1d3b8c73dea78f4cb9c0a7174a589c9, type: 3}
+  m_PrefabInstance: {fileID: 9134776264606651696}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad1abc36ae6c8524f9293c2958ef99e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1773049452
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,6 +625,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Assembler Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1804450391068782392, guid: 72c7c683f5de6594185509c5c961f90a, type: 3}
+      propertyPath: assembler
+      value: 
+      objectReference: {fileID: 1449096850}
     - target: {fileID: 1804450391068782393, guid: 72c7c683f5de6594185509c5c961f90a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
