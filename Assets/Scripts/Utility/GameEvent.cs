@@ -9,6 +9,12 @@ public static class GameEvent
     /// </summary>
     public delegate void ScoreHandler(int score);
 
+    
+    public delegate void FoodHandler();
+
+
+    public delegate void SodaHandler();
+    
     /// <summary>
     /// Handles the player's current order.
     /// </summary>
@@ -20,6 +26,16 @@ public static class GameEvent
     public static event ScoreHandler OnScoreChange;
 
     /// <summary>
+    /// Detects when the food order has been completed.
+    /// </summary>
+    public static event FoodHandler OnFoodOrderComplete;
+    
+    /// <summary>
+    /// Detects when the soda order has been completed.
+    /// </summary>
+    public static event SodaHandler OnSodaOrderComplete;
+    
+    /// <summary>
     /// Detects when the current order has been completed.
     /// </summary>
     public static event OrderHandler OnOrderComplete;
@@ -29,6 +45,12 @@ public static class GameEvent
     /// </summary>
     /// <param name="score">The amount to modify the score by.</param>
     public static void ChangeScore(int score) => OnScoreChange?.Invoke(score);
+    
+    
+    public static void CompleteFoodOrder() => OnFoodOrderComplete?.Invoke();
+    
+    
+    public static void CompleteSodaOrder() => OnSodaOrderComplete?.Invoke();
     
     /// <summary>
     /// Completes the current order.

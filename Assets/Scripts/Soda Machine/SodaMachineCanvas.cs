@@ -30,6 +30,10 @@ public class SodaMachineCanvas : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="soda"></param>
     public void PourSoda(GameObject soda)
     {
         

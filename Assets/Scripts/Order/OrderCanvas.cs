@@ -47,7 +47,8 @@ public class OrderCanvas : MonoBehaviour
     /// <summary>
     /// To be appended to text if there is no ingredient for a particular ingredient type.
     /// </summary>
-    private string _nullObjectString = "        ???";
+    private const string NullObjectString = "        ???";
+    // TODO: change this to say [redacted] or something
 
     /// <summary>
     /// Sets the canvas to be inactive initially.
@@ -82,7 +83,7 @@ public class OrderCanvas : MonoBehaviour
             }
             else
             {
-                _textMeshes[type].text = _nullObjectString;
+                _textMeshes[type].text = NullObjectString;
                 _images[type].color = new Color(1, 1, 1, 0);
             }
         }

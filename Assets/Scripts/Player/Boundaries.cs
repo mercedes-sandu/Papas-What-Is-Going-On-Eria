@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Player))]
+[RequireComponent(typeof(PlayerControl))]
 public class Boundaries : MonoBehaviour
 {
     /// <summary>

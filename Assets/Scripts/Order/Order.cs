@@ -9,6 +9,11 @@ using Random = UnityEngine.Random;
 public class Order : MonoBehaviour
 {
     /// <summary>
+    /// 
+    /// </summary>
+    public static Order Instance = null;
+    
+    /// <summary>
     /// The list of necessary ingredients for this order.
     /// </summary>
     private Dictionary<TypeOfIngredient, GameObject> _ingredients = new Dictionary<TypeOfIngredient, GameObject>();
@@ -29,11 +34,18 @@ public class Order : MonoBehaviour
     [SerializeField] private bool isComplete;
 
     /// <summary>
-    /// Subscribes to GameEvents.
+    /// Creates instance and subscribes to GameEvents.
     /// </summary>
     void Awake()
     {
-        
+        if (!Instance)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
     
     /// <summary>
