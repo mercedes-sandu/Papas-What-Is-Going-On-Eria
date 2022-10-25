@@ -127,7 +127,7 @@ MonoBehaviour:
         m_MethodName: CreateItem
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2797024008165333979, guid: f711e2c2e5b8dd74da2032339c9b38b2, type: 3}
+          m_ObjectArgument: {fileID: 7361857105815309255, guid: c2f4ea454c05cfa47a64043127da6350, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -146,6 +146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8689d1774e045d64599a3ec02030e860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 7361857105815309255, guid: c2f4ea454c05cfa47a64043127da6350, type: 3}
+  normalImage: {fileID: 0}
+  corruptedImage: {fileID: 0}
 --- !u!1 &1804450389170352746
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +653,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8689d1774e045d64599a3ec02030e860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 177282545570724609, guid: 49dd7a3186a0c814792a83322400a5db, type: 3}
+  normalImage: {fileID: 0}
+  corruptedImage: {fileID: 0}
 --- !u!1 &1804450389855053938
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,6 +802,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8689d1774e045d64599a3ec02030e860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 800364998134834255, guid: e709cd99835f1e5488301212fb936919, type: 3}
+  normalImage: {fileID: 0}
+  corruptedImage: {fileID: 0}
 --- !u!1 &1804450390097394692
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,6 +951,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8689d1774e045d64599a3ec02030e860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 1668325834426434796, guid: f14edb54f6bc40b48b49372add0bed22, type: 3}
+  normalImage: {fileID: 0}
+  corruptedImage: {fileID: 0}
 --- !u!1 &1804450390116282387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,6 +1100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8689d1774e045d64599a3ec02030e860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 2797024008165333979, guid: f711e2c2e5b8dd74da2032339c9b38b2, type: 3}
+  normalImage: {fileID: 0}
+  corruptedImage: {fileID: 0}
 --- !u!1 &1804450390186886470
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,6 +1249,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8689d1774e045d64599a3ec02030e860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 5594446753689376486, guid: bea4072a8bc673b49b8f10776362f3e3, type: 3}
+  normalImage: {fileID: 0}
+  corruptedImage: {fileID: 0}
 --- !u!1 &1804450390940455916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,6 +1474,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8689d1774e045d64599a3ec02030e860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 800364998134834255, guid: f50e264e16467944a9ca9875e195d44f, type: 3}
+  normalImage: {fileID: 0}
+  corruptedImage: {fileID: 0}
 --- !u!1 &1804450391030256945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1811,6 +1832,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8689d1774e045d64599a3ec02030e860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 2339505437124042981, guid: 6fa61e7431efe4844b36155086b08d2d, type: 3}
+  normalImage: {fileID: 0}
+  corruptedImage: {fileID: 0}
 --- !u!1 &1804450391068782389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1930,6 +1954,7 @@ MonoBehaviour:
   cookedMeat: {fileID: 4338622272167830892}
   plate: {fileID: 1804450390940455916}
   ghostObject: {fileID: 7148635771999134959}
+  xDistances: []
 --- !u!1 &4338622272167830892
 GameObject:
   m_ObjectHideFlags: 0
