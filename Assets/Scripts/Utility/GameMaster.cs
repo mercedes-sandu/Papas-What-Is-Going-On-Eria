@@ -6,11 +6,6 @@ using UnityEngine;
 public class GameMaster : MonoBehaviour
 {
     /// <summary>
-    /// An instance of the game master that is accessible by all classes.
-    /// </summary>
-    public static GameMaster Instance = null;
-
-    /// <summary>
     /// The time that is allowed to pass until the level is over.
     /// </summary>
     [SerializeField] private float levelTime = 300f;
@@ -21,22 +16,7 @@ public class GameMaster : MonoBehaviour
     private float _startTime;
 
     /// <summary>
-    /// Initializes components and variables.
-    /// </summary>
-    void Awake()
-    {
-        if (!Instance)
-        {
-            Instance = this;
-        } 
-        else if (Instance != this)
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    /// <summary>
-    /// 
+    /// Sets the level start time.
     /// </summary>
     void Start()
     {
@@ -44,13 +24,14 @@ public class GameMaster : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Checks if the level has run out of time.
     /// </summary>
     void Update()
     {
         if (Time.time - _startTime >= levelTime)
         {
             // TODO: trigger game over
+            // todo: do this with a coroutine if possible
         }
     }
 }

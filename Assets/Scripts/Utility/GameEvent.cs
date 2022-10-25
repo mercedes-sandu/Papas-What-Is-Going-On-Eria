@@ -12,13 +12,13 @@ public static class GameEvent
     public delegate void ScoreHandler(int amount);
 
     /// <summary>
-    /// 
+    /// Handles the player's food order.
     /// </summary>
     public delegate void FoodHandler(Dictionary<TypeOfIngredient, GameObject> necessaryIngredients,
-        List<Tuple<GameObject, TypeOfIngredient>> usedIngredients);
+        List<Tuple<GameObject, TypeOfIngredient>> usedIngredients, List<float> xDistances);
 
     /// <summary>
-    /// 
+    /// Handles the player's soda order.
     /// </summary>
     public delegate void SodaHandler(GameObject necessarySoda, GameObject usedSoda, float heightDifference);
     
@@ -28,7 +28,7 @@ public static class GameEvent
     public delegate void OrderHandler();
 
     /// <summary>
-    /// 
+    /// Handles the level.
     /// </summary>
     public delegate void LevelHandler();
 
@@ -53,7 +53,7 @@ public static class GameEvent
     public static event OrderHandler OnOrderComplete;
 
     /// <summary>
-    /// 
+    /// Detects when the level has been completed.
     /// </summary>
     public static event LevelHandler OnLevelComplete;
     
@@ -62,22 +62,23 @@ public static class GameEvent
     /// </summary>
     /// <param name="amount">The amount to modify the score by.</param>
     public static void ChangeScore(int amount) => OnScoreChange?.Invoke(amount);
-    
+
     /// <summary>
-    /// 
+    /// Completes the food order.
     /// </summary>
-    /// <param name="necessaryIngredients"></param>
-    /// <param name="usedIngredients"></param>
+    /// <param name="necessaryIngredients">The necessary ingredients for the order.</param>
+    /// <param name="usedIngredients">The ingredients used for this order.</param>
+    /// <param name="xDistances">The differences in x-positions of the stacked ingredients from the center.</param>
     public static void CompleteFoodOrder(Dictionary<TypeOfIngredient, GameObject> necessaryIngredients,
-        List<Tuple<GameObject, TypeOfIngredient>> usedIngredients) => 
-        OnFoodOrderComplete?.Invoke(necessaryIngredients, usedIngredients);
+        List<Tuple<GameObject, TypeOfIngredient>> usedIngredients, List<float> xDistances) => 
+        OnFoodOrderComplete?.Invoke(necessaryIngredients, usedIngredients, xDistances);
     
     /// <summary>
-    /// 
+    /// Completes the soda order.
     /// </summary>
-    /// <param name="necessarySoda"></param>
-    /// <param name="usedSoda"></param>
-    /// <param name="heightDifference"></param>
+    /// <param name="necessarySoda">The necessary soda for this order.</param>
+    /// <param name="usedSoda">The soda used for this order.</param>
+    /// <param name="heightDifference">The difference in y-position of the soda from the fill line.</param>
     public static void CompleteSodaOrder(GameObject necessarySoda, GameObject usedSoda, float heightDifference) => 
         OnSodaOrderComplete?.Invoke(necessarySoda, usedSoda, heightDifference);
     
@@ -87,7 +88,7 @@ public static class GameEvent
     public static void CompleteOrder() => OnOrderComplete?.Invoke();
     
     /// <summary>
-    /// 
+    /// Completes the current level.
     /// </summary>
     public static void CompleteLevel() => OnLevelComplete?.Invoke();
 }

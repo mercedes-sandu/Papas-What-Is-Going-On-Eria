@@ -27,6 +27,17 @@ public class AssemblerCanvas : MonoBehaviour
     /// The ghost object which follows the player's cursor.
     /// </summary>
     [SerializeField] private GameObject ghostObject;
+    
+    /// <summary>
+    /// The list of currently stacked items in the assembler canvas.
+    /// </summary>
+    [SerializeField] private List<Tuple<GameObject, TypeOfIngredient>> _stackedItems
+        = new List<Tuple<GameObject, TypeOfIngredient>>();
+
+    /// <summary>
+    /// The list of differences in the x-positions of the stacked items from the center value.
+    /// </summary>
+    [SerializeField] private List<float> xDistances;
 
     /// <summary>
     /// The center x-position of the plate.
@@ -65,6 +76,7 @@ public class AssemblerCanvas : MonoBehaviour
     {
         _centerX = plate.transform.position.x; // TODO: check if this is actually correct
         ghostObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+        cookedMeat.GetComponent<Image>().color = new Color(1, 1, 1, 0);
         gameObject.SetActive(false);
     }
 
@@ -107,7 +119,8 @@ public class AssemblerCanvas : MonoBehaviour
                 placedObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
             }
             
-            assembler.AddItem(placedObject, _currentIngredientType);
+            _stackedItems.Add(new Tuple<GameObject, TypeOfIngredient>(placedObject, _currentIngredientType));
+            // todo: calculate xDistances and add to list
             _currentIngredientType = TypeOfIngredient.None;
         }
     }
@@ -168,7 +181,7 @@ public class AssemblerCanvas : MonoBehaviour
     /// </summary>
     public void CompleteFoodOrder()
     {
-        
+        GameEvent.CompleteFoodOrder(Order.Instance.GetIngredientsDict(), _stackedItems, xDistances);
     }
 
     /// <summary>

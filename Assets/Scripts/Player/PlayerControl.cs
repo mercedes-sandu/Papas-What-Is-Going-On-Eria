@@ -7,11 +7,6 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     /// <summary>
-    /// An instance of the player's movement component that is accessible by all classes.
-    /// </summary>
-    public static PlayerControl Instance = null;
-
-    /// <summary>
     /// The player's movement speed.
     /// </summary>
     [SerializeField] private float _speed = 5f;
@@ -36,15 +31,6 @@ public class PlayerControl : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        if (!Instance)
-        {
-            Instance = this;
-        }
-        else if (Instance != this)
-        {
-            Destroy(gameObject);
-        }
-
         _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
     }

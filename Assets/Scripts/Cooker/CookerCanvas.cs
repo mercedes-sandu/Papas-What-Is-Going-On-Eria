@@ -67,7 +67,7 @@ public class CookerCanvas : MonoBehaviour
     /// <summary>
     /// True if the cooked meat has been clicked, false otherwise.
     /// </summary>
-    private bool _meatCliked = false;
+    private bool _meatClicked = false;
     
     /// <summary>
     /// The time that the object has been placed.
@@ -108,7 +108,7 @@ public class CookerCanvas : MonoBehaviour
             CloseCanvas();
         }
         
-        if (_placed && !_meatCliked)
+        if (_placed && !_meatClicked)
         {
             // Gradually change the color of the meat.
             grillPoint.color = Color.Lerp(_grillColors[0], _grillColors[3],
@@ -152,7 +152,7 @@ public class CookerCanvas : MonoBehaviour
     /// </summary>
     public void OnMeatClick()
     {
-        _meatCliked = true;
+        _meatClicked = true;
         cookedColor = grillPoint.color;
         cookedMeat = grillPoint.gameObject;
         grillPoint.color = new Color(1, 1, 1, 0);

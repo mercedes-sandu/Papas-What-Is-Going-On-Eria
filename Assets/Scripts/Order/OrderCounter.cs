@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Scripts;
@@ -16,6 +17,14 @@ public class OrderCounter : MonoBehaviour, IInteractable
     /// </summary>
     private Order _order;
 
+    /// <summary>
+    /// Subscribes to GameEvents.
+    /// </summary>
+    void Awake()
+    {
+        GameEvent.OnOrderComplete += HideOrderCanvas;
+    }
+    
     /// <summary>
     /// Gets the order.
     /// </summary>
@@ -37,5 +46,21 @@ public class OrderCounter : MonoBehaviour, IInteractable
         var canvas = orderCanvas.GetComponent<OrderCanvas>();
         canvas.UpdateOrder(_order.GetIngredientsDict(), _order.GetCookTime(), _order.GetSoda());
         return true;
+    }
+
+    /// <summary>
+    /// Hides the order canvas.
+    /// </summary>
+    private void HideOrderCanvas()
+    {
+        orderCanvas.SetActive(false);
+    }
+
+    /// <summary>
+    /// Unsubscribes from GameEvents.
+    /// </summary>
+    void OnDestroy()
+    {
+        GameEvent.OnOrderComplete -= HideOrderCanvas;
     }
 }

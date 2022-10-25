@@ -5,12 +5,12 @@ using UnityEngine;
 public class ServingCounterCanvas : MonoBehaviour
 {
     /// <summary>
-    /// 
+    /// The animator for the serving counter canvas.
     /// </summary>
     private Animator _animator;
     
     /// <summary>
-    /// 
+    /// Subscribes to GameEvents.
     /// </summary>
     void Awake()
     {
@@ -18,7 +18,7 @@ public class ServingCounterCanvas : MonoBehaviour
     }
     
     /// <summary>
-    /// 
+    /// Sets animator component and variable.
     /// </summary>
     void Start()
     {
@@ -27,7 +27,7 @@ public class ServingCounterCanvas : MonoBehaviour
     }
     
     /// <summary>
-    /// 
+    /// Animates the canvas.
     /// </summary>
     private void AnimateCanvas()
     {
@@ -35,7 +35,7 @@ public class ServingCounterCanvas : MonoBehaviour
     }
     
     /// <summary>
-    /// 
+    /// Stops animating the canvas.
     /// </summary>
     public void StopAnimateCanvas()
     {
@@ -43,7 +43,7 @@ public class ServingCounterCanvas : MonoBehaviour
     }
     
     /// <summary>
-    /// 
+    /// Unsubscribes from GameEvents.
     /// </summary>
     void OnDestroy()
     {

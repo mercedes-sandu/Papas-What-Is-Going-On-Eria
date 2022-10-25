@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 public class Order : MonoBehaviour
 {
     /// <summary>
-    /// 
+    /// An instance of the order that is accessible by all classes.
     /// </summary>
     public static Order Instance = null;
     
