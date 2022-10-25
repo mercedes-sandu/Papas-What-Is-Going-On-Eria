@@ -2,10 +2,26 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Scripts;
+using TMPro;
 using UnityEngine;
 
 public class ScoringSystem : MonoBehaviour
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField] private GameObject levelOverCanvas;
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField] private TextMeshProUGUI scoreText;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField] private TextMeshProUGUI ordersCompletedText;
+    
     /// <summary>
     /// The player's score.
     /// </summary>
@@ -23,7 +39,14 @@ public class ScoringSystem : MonoBehaviour
     {
         GameEvent.OnScoreChange += ChangeScore;
         GameEvent.OnFoodOrderComplete += ScoreFoodOrder;
+        GameEvent.OnSodaOrderComplete += ScoreSodaOrder;
         GameEvent.OnOrderComplete += IncrementOrdersCompleted;
+        GameEvent.OnLevelComplete += CompleteLevel;
+    }
+
+    void Start()
+    {
+        levelOverCanvas.SetActive(false);
     }
 
     /// <summary>
@@ -39,9 +62,10 @@ public class ScoringSystem : MonoBehaviour
     /// 
     /// </summary>
     /// <param name="order"></param>
-    private void IncrementOrdersCompleted(Order order)
+    private void IncrementOrdersCompleted()
     {
         ordersCompleted++;
+        ordersCompletedText.text = "Orders Completed: " + ordersCompleted;
     }
     
     /// <summary>
@@ -73,10 +97,21 @@ public class ScoringSystem : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
+    private void CompleteLevel()
+    {
+        scoreText.text = "Score: " + score;
+        levelOverCanvas.SetActive(true);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
     void OnDestroy()
     {
         GameEvent.OnScoreChange -= ChangeScore;
         GameEvent.OnFoodOrderComplete -= ScoreFoodOrder;
+        GameEvent.OnSodaOrderComplete -= ScoreSodaOrder;
         GameEvent.OnOrderComplete -= IncrementOrdersCompleted;
+        GameEvent.OnLevelComplete -= CompleteLevel;
     }
 }

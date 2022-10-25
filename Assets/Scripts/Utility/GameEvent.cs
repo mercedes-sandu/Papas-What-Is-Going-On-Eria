@@ -25,7 +25,12 @@ public static class GameEvent
     /// <summary>
     /// Handles the player's current order.
     /// </summary>
-    public delegate void OrderHandler(Order order);
+    public delegate void OrderHandler();
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public delegate void LevelHandler();
 
     /// <summary>
     /// Detects when the score needs to be changed.
@@ -46,6 +51,11 @@ public static class GameEvent
     /// Detects when the current order has been completed.
     /// </summary>
     public static event OrderHandler OnOrderComplete;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public static event LevelHandler OnLevelComplete;
     
     /// <summary>
     /// Changes the score by adding the specified modifier.
@@ -74,6 +84,10 @@ public static class GameEvent
     /// <summary>
     /// Completes the current order.
     /// </summary>
-    /// <param name="order">The current order.</param>
-    public static void CompleteOrder(Order order) => OnOrderComplete?.Invoke(order);
+    public static void CompleteOrder() => OnOrderComplete?.Invoke();
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    public static void CompleteLevel() => OnLevelComplete?.Invoke();
 }

@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ServingCounter : MonoBehaviour
+public class ServingCounter : MonoBehaviour, IInteractable
 {
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// Completes the order.
+    /// </summary>
+    /// <param name="interactor">The interactor component.</param>
+    /// <returns>True if the interaction was successful, false otherwise.</returns>
+    public bool Interact(Interactor interactor)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("Interacting with serving counter.");
+        GameEvent.CompleteOrder();
+        return true;
     }
 }
