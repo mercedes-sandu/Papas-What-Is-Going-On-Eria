@@ -27,11 +27,22 @@ public class Order : MonoBehaviour
     /// The soda for this order.
     /// </summary>
     private GameObject _soda;
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    private Dictionary<TypeOfIngredient, List<GameObject>> _ingredientPrefabs 
+        = new Dictionary<TypeOfIngredient, List<GameObject>>();
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    private GameObject[] _sodaPrefabs;
 
     /// <summary>
-    /// True if the order has been completed, false otherwise.
+    /// 
     /// </summary>
-    [SerializeField] private bool isComplete;
+    private List<TypeOfIngredient> _types;
 
     /// <summary>
     /// Creates instance and subscribes to GameEvents.
@@ -46,30 +57,48 @@ public class Order : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        GameEvent.OnOrderComplete += RemoveRandomItem;
     }
-    
+
+    /// <summary>
+    /// Gets the ingredient prefabs.
+    /// </summary>
+    void Start()
+    {
+        // Get all the food ingredient prefabs.
+        foreach (TypeOfIngredient type in TypeOfIngredient.GetValues(typeof(TypeOfIngredient)))
+        {
+            if (!type.Equals(TypeOfIngredient.None))
+            {
+                _ingredientPrefabs[type] = Resources.LoadAll<GameObject>("Ingredient Prefabs/" + type).ToList();
+                _types.Add(type);
+            }
+        }
+        
+        // Get all the soda prefabs.
+        _sodaPrefabs = Resources.LoadAll<GameObject>("Ingredient Prefabs/Soda");
+    }
+
     /// <summary>
     /// Picks a random ingredient from each type of ingredient and adds its prefab to _ingredients.
     /// </summary>
     public void InitializeOrder()
     {
-        isComplete = false;
-        foreach (TypeOfIngredient type in TypeOfIngredient.GetValues(typeof(TypeOfIngredient)))
+        // Get the food ingredients.
+        foreach (TypeOfIngredient type in _types)
         {
-            if (!type.Equals(TypeOfIngredient.None))
-            {
-                var resources = Resources.LoadAll<GameObject>("Ingredient Prefabs/" + type);
-                var prefabs = resources
-                    .Where(x => x.GetComponent<Ingredient>() != null && x.GetComponent<Ingredient>().CanUse())
-                    .ToList();
-                _ingredients[type] = prefabs.Count != 0 ? prefabs[Random.Range(0, prefabs.Count)] : null;
-            }
+            var prefabs = _ingredientPrefabs[type]
+                .Where(x => x.GetComponent<Ingredient>() != null && x.GetComponent<Ingredient>().CanUse())
+                .ToList();
+            _ingredients[type] = prefabs.Count != 0 ? prefabs[Random.Range(0, prefabs.Count)] : null;
         }
 
-        _cookTime = Random.Range(1, 5);
+        // Get the cook time for the meat.
+        if (_ingredients.ContainsKey(TypeOfIngredient.Meat)) _cookTime = Random.Range(1, 5);
         
-        var sodas = Resources.LoadAll<GameObject>("Ingredient Prefabs/Soda");
-        _soda = sodas[Random.Range(0, sodas.Length)];
+        // Get the soda.
+        _soda = _sodaPrefabs[Random.Range(0, _sodaPrefabs.Length)];
     }
     
     /// <summary>
@@ -89,16 +118,22 @@ public class Order : MonoBehaviour
     /// </summary>
     /// <returns>The soda.</returns>
     public GameObject GetSoda() => _soda;
+
+    /// <summary>
+    /// Sets the usability of a random ingredient to false.
+    /// </summary>
+    private void RemoveRandomItem()
+    {
+        TypeOfIngredient randomType = _types[Random.Range(0, _types.Count)];
+        _ingredientPrefabs[randomType][Random.Range(0, _ingredientPrefabs[randomType].Count)].GetComponent<Ingredient>()
+            .SetUsability(false);
+    }
     
     /// <summary>
-    /// Returns whether this order has been completed.
+    /// Unsubscribes from GameEvents.
     /// </summary>
-    /// <returns>True if this order has been completed, false otherwise.</returns>
-    public bool IsComplete() => isComplete;
-    
-    /// <summary>
-    /// Sets the order to be complete (or not).
-    /// </summary>
-    /// <param name="complete">True if the order is complete, false otherwise.</param>
-    public void SetComplete(bool complete) => isComplete = complete;
+    void OnDestroy()
+    {
+        GameEvent.OnOrderComplete -= RemoveRandomItem;
+    }
 }
