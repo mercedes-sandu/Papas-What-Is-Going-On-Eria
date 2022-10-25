@@ -38,9 +38,14 @@ public class CookerCanvas : MonoBehaviour
     [SerializeField] private GameObject cookedMeat;
 
     /// <summary>
-    /// The color at which the meet has been cooked.
+    /// The color at which the meat has been cooked.
     /// </summary>
     [SerializeField] private Color cookedColor;
+
+    /// <summary>
+    /// The name of the meat that has been cooked.
+    /// </summary>
+    [SerializeField] private string cookedMeatName;
 
     /// <summary>
     /// The list of color filters that change the appearance of the cooking meat.
@@ -137,6 +142,7 @@ public class CookerCanvas : MonoBehaviour
     {
         grillPoint.sprite = meat.GetComponent<SpriteRenderer>().sprite;
         grillPoint.color = new Color(1, 0, 0, 1);
+        cookedMeatName = meat.name;
         _placed = true;
         _grillStartTime = Time.time;
     }
@@ -164,6 +170,12 @@ public class CookerCanvas : MonoBehaviour
     /// </summary>
     /// <returns>Cooked meat color.</returns>
     public Color GetCookedColor() => cookedColor;
+
+    /// <summary>
+    /// Returns the cooked meat name.
+    /// </summary>
+    /// <returns>Name.</returns>
+    public string GetCookedMeatName() => cookedMeatName;
 
     /// <summary>
     /// Closes the cooker canvas.

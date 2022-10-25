@@ -48,6 +48,16 @@ public class AssemblerCanvas : MonoBehaviour
     private TypeOfIngredient _currentIngredientType = TypeOfIngredient.None;
 
     /// <summary>
+    /// The color of the meat.
+    /// </summary>
+    private Color _meatColor;
+    
+    /// <summary>
+    /// True if the player is currently holding meat, false otherwise.
+    /// </summary>
+    private bool _isHoldingMeat = false;
+
+    /// <summary>
     /// Initializes necessary components and sets the canvas to be inactive.
     /// </summary>
     void Start()
@@ -67,9 +77,16 @@ public class AssemblerCanvas : MonoBehaviour
             CloseCanvas();
         }
 
-        ghostObject.GetComponent<Image>().color = _placingObject ? new Color(1, 1, 1, 0.5f) 
-            : new Color(1, 1, 1, 0);
-
+        if (_isHoldingMeat)
+        {
+            ghostObject.GetComponent<Image>().color = new Color(_meatColor.r, _meatColor.g, _meatColor.b, 0.5f);
+        }
+        else
+        {
+            ghostObject.GetComponent<Image>().color = _placingObject ? new Color(1, 1, 1, 0.5f) 
+                : new Color(1, 1, 1, 0);
+        }
+        
         ghostObject.transform.position = Input.mousePosition;
 
         if (_placingObject && Input.GetMouseButtonDown(0))
@@ -78,7 +95,17 @@ public class AssemblerCanvas : MonoBehaviour
             var placedObject = Instantiate(ghostObject, ghostObject.transform.position, Quaternion.identity,
                 plate.transform);
             placedObject.name = _nameOfPlacedObject;
-            placedObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            
+            if (_isHoldingMeat)
+            {
+                placedObject.GetComponent<Image>().color = _meatColor;
+                _isHoldingMeat = false;
+            }
+            else
+            {
+                placedObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            }
+            
             assembler.AddItem(placedObject, _currentIngredientType);
             _currentIngredientType = TypeOfIngredient.None;
         }
@@ -95,17 +122,41 @@ public class AssemblerCanvas : MonoBehaviour
             Destroy(cookedMeat.GetComponent<EventTrigger>());
             cookedMeat.GetComponent<Image>().sprite = CookerCanvas.Instance.GetCookedMeat().GetComponent<Image>().sprite;
             cookedMeat.GetComponent<Image>().color = CookerCanvas.Instance.GetCookedColor();
+            _meatColor = CookerCanvas.Instance.GetCookedColor();
         }
     }
 
+    /// <summary>
+    /// Creates a semi-transparent meat item that will follow the cursor.
+    /// </summary>
+    public void CreateMeat()
+    {
+        var meat = CookerCanvas.Instance.GetCookedMeat();
+        meat.AddComponent<Ingredient>();
+        meat.GetComponent<Ingredient>().SetTypeOfIngredient(TypeOfIngredient.Meat);
+        meat.name = CookerCanvas.Instance.GetCookedMeatName();
+        CreateItem(meat);
+    }
+    
     /// <summary>
     /// Creates a semi-transparent item that will follow the cursor.
     /// </summary>
     /// <param name="item">The item to be created.</param>
     public void CreateItem(GameObject item)
     {
-        ghostObject.GetComponent<Image>().sprite = item.GetComponent<SpriteRenderer>().sprite;
-        ghostObject.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
+        ghostObject.GetComponent<Image>().sprite = item.GetComponent<SpriteRenderer>() != null 
+            ? item.GetComponent<SpriteRenderer>().sprite : item.GetComponent<Image>().sprite;
+
+        if (item.GetComponent<Ingredient>().GetTypeOfIngredient().Equals(TypeOfIngredient.Meat))
+        {
+            _isHoldingMeat = true;
+            ghostObject.GetComponent<Image>().color = new Color(_meatColor.r, _meatColor.g, _meatColor.b, 0.5f);
+        }
+        else
+        {
+            ghostObject.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
+        }
+        
         _nameOfPlacedObject = item.name;
         _currentIngredientType = item.GetComponent<Ingredient>().GetTypeOfIngredient();
         _placingObject = true;
