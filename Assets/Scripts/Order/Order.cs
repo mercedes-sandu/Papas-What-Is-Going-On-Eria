@@ -16,7 +16,8 @@ public class Order : MonoBehaviour
     /// <summary>
     /// The list of necessary ingredients for this order.
     /// </summary>
-    private Dictionary<TypeOfIngredient, GameObject> _ingredients = new Dictionary<TypeOfIngredient, GameObject>();
+    private readonly Dictionary<TypeOfIngredient, GameObject> _ingredients 
+        = new Dictionary<TypeOfIngredient, GameObject>();
 
     /// <summary>
     /// The cook time for the meat for this order.
@@ -31,7 +32,7 @@ public class Order : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
-    private Dictionary<TypeOfIngredient, List<GameObject>> _ingredientPrefabs 
+    private readonly Dictionary<TypeOfIngredient, List<GameObject>> _ingredientPrefabs 
         = new Dictionary<TypeOfIngredient, List<GameObject>>();
     
     /// <summary>
