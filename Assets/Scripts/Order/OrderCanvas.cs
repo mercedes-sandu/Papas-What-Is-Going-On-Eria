@@ -73,6 +73,8 @@ public class OrderCanvas : MonoBehaviour
     /// Updates the order ticket UI with the specified ingredients list and sets the canvas to be active.
     /// </summary>
     /// <param name="ingredients">The dictionary of ingredients for this order ticket.</param>
+    /// <param name="cookTime">The cook time necessary for the meat on this order ticket.</param>
+    /// <param name="soda">The soda needed for this order ticket,</param>
     public void UpdateOrder(Dictionary<TypeOfIngredient, GameObject> ingredients, int cookTime, GameObject soda)
     {
         foreach (TypeOfIngredient type in ingredients.Keys)

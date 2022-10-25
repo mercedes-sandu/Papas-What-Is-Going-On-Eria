@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Scripts;
 using UnityEngine;
 
 public static class GameEvent
@@ -7,13 +9,18 @@ public static class GameEvent
     /// <summary>
     /// Handles the player's score.
     /// </summary>
-    public delegate void ScoreHandler(int score);
+    public delegate void ScoreHandler(int amount);
 
-    
-    public delegate void FoodHandler();
+    /// <summary>
+    /// 
+    /// </summary>
+    public delegate void FoodHandler(Dictionary<TypeOfIngredient, GameObject> necessaryIngredients,
+        List<Tuple<GameObject, TypeOfIngredient>> usedIngredients);
 
-
-    public delegate void SodaHandler();
+    /// <summary>
+    /// 
+    /// </summary>
+    public delegate void SodaHandler(GameObject necessarySoda, GameObject usedSoda, float heightDifference);
     
     /// <summary>
     /// Handles the player's current order.
@@ -43,14 +50,26 @@ public static class GameEvent
     /// <summary>
     /// Changes the score by adding the specified modifier.
     /// </summary>
-    /// <param name="score">The amount to modify the score by.</param>
-    public static void ChangeScore(int score) => OnScoreChange?.Invoke(score);
+    /// <param name="amount">The amount to modify the score by.</param>
+    public static void ChangeScore(int amount) => OnScoreChange?.Invoke(amount);
     
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="necessaryIngredients"></param>
+    /// <param name="usedIngredients"></param>
+    public static void CompleteFoodOrder(Dictionary<TypeOfIngredient, GameObject> necessaryIngredients,
+        List<Tuple<GameObject, TypeOfIngredient>> usedIngredients) => 
+        OnFoodOrderComplete?.Invoke(necessaryIngredients, usedIngredients);
     
-    public static void CompleteFoodOrder() => OnFoodOrderComplete?.Invoke();
-    
-    
-    public static void CompleteSodaOrder() => OnSodaOrderComplete?.Invoke();
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="necessarySoda"></param>
+    /// <param name="usedSoda"></param>
+    /// <param name="heightDifference"></param>
+    public static void CompleteSodaOrder(GameObject necessarySoda, GameObject usedSoda, float heightDifference) => 
+        OnSodaOrderComplete?.Invoke(necessarySoda, usedSoda, heightDifference);
     
     /// <summary>
     /// Completes the current order.

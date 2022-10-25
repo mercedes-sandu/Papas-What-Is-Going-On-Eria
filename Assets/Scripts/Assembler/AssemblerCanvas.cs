@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Scripts;
@@ -57,14 +58,6 @@ public class AssemblerCanvas : MonoBehaviour
     /// </summary>
     private bool _isHoldingMeat = false;
 
-    /// <summary>
-    /// 
-    /// </summary>
-    void Awake()
-    {
-        GameEvent.OnFoodOrderComplete += CompleteFoodOrder;
-    }
-    
     /// <summary>
     /// Initializes necessary components and sets the canvas to be inactive.
     /// </summary>
@@ -184,13 +177,5 @@ public class AssemblerCanvas : MonoBehaviour
     public void CloseCanvas()
     {
         gameObject.SetActive(false);
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    private void OnDestroy()
-    {
-        GameEvent.OnFoodOrderComplete -= CompleteFoodOrder;
     }
 }

@@ -95,21 +95,10 @@ public class Order : MonoBehaviour
     /// </summary>
     /// <returns>True if this order has been completed, false otherwise.</returns>
     public bool IsComplete() => isComplete;
-
-    /// <summary>
-    /// Completes the order.
-    /// </summary>
-    /// <param name="order">The current order.</param>
-    public static void CompleteOrder(List<Tuple<GameObject, TypeOfIngredient>> order)
-    {
-        
-    }
     
     /// <summary>
-    /// Unsubscribes to GameEvents.
+    /// Sets the order to be complete (or not).
     /// </summary>
-    void OnDestroy()
-    {
-        
-    }
+    /// <param name="complete">True if the order is complete, false otherwise.</param>
+    public void SetComplete(bool complete) => isComplete = complete;
 }

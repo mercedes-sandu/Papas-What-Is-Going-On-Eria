@@ -32,6 +32,7 @@ public class OrderCounter : MonoBehaviour, IInteractable
     public bool Interact(Interactor interactor)
     {
         Debug.Log("Interacting with order counter.");
+        GameEvent.ChangeScore(100);
         _order.InitializeOrder();
         var canvas = orderCanvas.GetComponent<OrderCanvas>();
         canvas.UpdateOrder(_order.GetIngredientsDict(), _order.GetCookTime(), _order.GetSoda());
