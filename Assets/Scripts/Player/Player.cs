@@ -7,14 +7,14 @@ public class Player : MonoBehaviour
     /// <summary>
     /// The player's score.
     /// </summary>
-    private int _score;
+    [SerializeField] private int score;
 
     /// <summary>
     /// Gets or sets the player's score.
     /// </summary>
     public int Score
     {
-        get => _score;
-        set => _score = value;
+        get => score;
+        set => score = value;
     }
 }
