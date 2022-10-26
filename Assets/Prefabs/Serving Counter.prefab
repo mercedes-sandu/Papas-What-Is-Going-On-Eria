@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6849580542920073269}
   - component: {fileID: 6849580542920073275}
   - component: {fileID: 6849580542920073274}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Serving Counter
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

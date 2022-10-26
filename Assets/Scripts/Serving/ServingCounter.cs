@@ -11,7 +11,6 @@ public class ServingCounter : MonoBehaviour, IInteractable
     /// <returns>True if the interaction was successful, false otherwise.</returns>
     public bool Interact(Interactor interactor)
     {
-        Debug.Log("Interacting with serving counter.");
         GameEvent.CompleteOrder();
         return true;
     }

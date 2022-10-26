@@ -40,7 +40,6 @@ public class OrderCounter : MonoBehaviour, IInteractable
     /// <returns>True if the interaction was successful, false otherwise.</returns>
     public bool Interact(Interactor interactor)
     {
-        Debug.Log("Interacting with order counter.");
         GameEvent.ChangeScore(100);
         _order.InitializeOrder();
         var canvas = orderCanvas.GetComponent<OrderCanvas>();

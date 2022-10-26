@@ -43,7 +43,7 @@ public class Order : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
-    private List<TypeOfIngredient> _types;
+    private readonly List<TypeOfIngredient> _types = new List<TypeOfIngredient>();
 
     /// <summary>
     /// Creates instance and subscribes to GameEvents.
@@ -76,7 +76,7 @@ public class Order : MonoBehaviour
                 _types.Add(type);
             }
         }
-        
+
         // Get all the soda prefabs.
         _sodaPrefabs = Resources.LoadAll<GameObject>("Ingredient Prefabs/Soda");
     }
