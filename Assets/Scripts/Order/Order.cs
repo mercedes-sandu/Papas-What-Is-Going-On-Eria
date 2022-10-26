@@ -70,7 +70,7 @@ public class Order : MonoBehaviour
         // Get all the food ingredient prefabs.
         foreach (TypeOfIngredient type in TypeOfIngredient.GetValues(typeof(TypeOfIngredient)))
         {
-            if (!type.Equals(TypeOfIngredient.None))
+            if (!type.Equals(TypeOfIngredient.None) && !type.Equals(TypeOfIngredient.Soda))
             {
                 _ingredientPrefabs[type] = Resources.LoadAll<GameObject>("Ingredient Prefabs/" + type).ToList();
                 _types.Add(type);
