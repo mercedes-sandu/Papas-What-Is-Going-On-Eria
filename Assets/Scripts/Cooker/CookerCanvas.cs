@@ -156,6 +156,7 @@ public class CookerCanvas : MonoBehaviour
         cookedColor = grillPoint.color;
         cookedMeat = grillPoint.gameObject;
         grillPoint.color = new Color(1, 1, 1, 0);
+        GameEvent.CompleteMeatCooking(Mathf.Abs(watchHand.transform.eulerAngles.z));
         Destroy(cookedMeat.GetComponent<EventTrigger>());
     }
     

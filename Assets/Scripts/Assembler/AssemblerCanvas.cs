@@ -149,6 +149,7 @@ public class AssemblerCanvas : MonoBehaviour
         meat.AddComponent<Ingredient>();
         meat.GetComponent<Ingredient>().SetTypeOfIngredient(TypeOfIngredient.Meat);
         meat.name = CookerCanvas.Instance.GetCookedMeatName();
+        cookedMeat.GetComponent<Image>().color = new Color(1, 1, 1, 0);
         CreateItem(meat);
     }
     

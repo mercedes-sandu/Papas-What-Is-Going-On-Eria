@@ -12,7 +12,7 @@ public class ScoringSystem : MonoBehaviour
     /// The level over canvas.
     /// </summary>
     [SerializeField] private GameObject levelOverCanvas;
-    
+
     /// <summary>
     /// The score text.
     /// </summary>
@@ -22,23 +22,24 @@ public class ScoringSystem : MonoBehaviour
     /// The orders completed text.
     /// </summary>
     [SerializeField] private TextMeshProUGUI ordersCompletedText;
-    
+
     /// <summary>
     /// The player's score.
     /// </summary>
     [SerializeField] private int score;
-    
+
     /// <summary>
     /// The number of orders the player has completed.
     /// </summary>
     [SerializeField] private int ordersCompleted;
-    
+
     /// <summary>
     /// Subscribes to GameEvents.
     /// </summary>
     void Awake()
     {
         GameEvent.OnScoreChange += ChangeScore;
+        GameEvent.OnMeatCooked += ScoreMeatOrder;
         GameEvent.OnFoodOrderComplete += ScoreFoodOrder;
         GameEvent.OnSodaOrderComplete += ScoreSodaOrder;
         GameEvent.OnOrderComplete += IncrementOrdersCompleted;
@@ -60,10 +61,10 @@ public class ScoringSystem : MonoBehaviour
     private void ChangeScore(int amount)
     {
         score += amount;
-        
+
         if (score < 0) score = 0;
     }
-    
+
     /// <summary>
     /// Increments the number of orders completed by 1.
     /// </summary>
@@ -71,6 +72,19 @@ public class ScoringSystem : MonoBehaviour
     {
         ordersCompleted++;
         ordersCompletedText.text = "Orders Completed: " + ordersCompleted;
+    }
+
+    /// <summary>
+    /// Scores how the meat is cooked.
+    /// </summary>
+    /// <param name="amount">The z-rotation of the watch hand on the cooker.</param>
+    private void ScoreMeatOrder(float amount)
+    {
+        // todo: debug
+        int requiredCookTime = Order.Instance.GetCookTime();
+        int cookedTime = (int)(amount / 90) + 2;
+        Debug.Log("amount: " + amount + " cookedTime: " + cookedTime + " requiredCookTime: " + requiredCookTime);
+        GameEvent.ChangeScore(Math.Abs(cookedTime - requiredCookTime) * -5);
     }
 
     /// <summary>
@@ -83,15 +97,17 @@ public class ScoringSystem : MonoBehaviour
         List<Tuple<GameObject, TypeOfIngredient>> usedIngredients, List<float> xDistances)
     {
         int decrementValue = 0;
-        
+
         // Check if the correct types of ingredients were used.
         decrementValue = necessaryIngredients.Keys.Where(type => usedIngredients
-            .FindIndex(x => x.Item2 == type) == -1)
+                .FindIndex(x => x.Item2 == type) == -1)
             .Aggregate(0, (current, type) => current - 10);
 
         // Check if the correct ingredients were used.
         decrementValue = usedIngredients.Where(ingredient => necessaryIngredients.Keys
-            .Contains(ingredient.Item2) && !ReferenceEquals(necessaryIngredients[ingredient.Item2], ingredient.Item1))
+                                                                 .Contains(ingredient.Item2) &&
+                                                             !ReferenceEquals(necessaryIngredients[ingredient.Item2],
+                                                                 ingredient.Item1))
             .Aggregate(decrementValue, (current, ingredient) => current - 10);
 
         // Check if the ingredients were placed at the correct positions.
@@ -100,7 +116,7 @@ public class ScoringSystem : MonoBehaviour
         // Change the score.
         GameEvent.ChangeScore(decrementValue);
     }
-    
+
     /// <summary>
     /// Scores the soda order according to accuracy of soda chosen and height difference from the fill line.
     /// </summary>
@@ -110,16 +126,16 @@ public class ScoringSystem : MonoBehaviour
     private void ScoreSodaOrder(GameObject necessarySoda, GameObject usedSoda, float heightDifference)
     {
         int decrementValue = 0;
-        
+
         // Check if the correct soda was used.
         if (!ReferenceEquals(necessarySoda, usedSoda))
         {
             decrementValue -= 10;
         }
-        
+
         // Check if the soda was filled to the correct height.
-        decrementValue -= (int) heightDifference;
-        
+        decrementValue -= (int)heightDifference;
+
         // Change the score.
         GameEvent.ChangeScore(decrementValue);
     }
@@ -140,6 +156,7 @@ public class ScoringSystem : MonoBehaviour
     void OnDestroy()
     {
         GameEvent.OnScoreChange -= ChangeScore;
+        GameEvent.OnMeatCooked -= ScoreMeatOrder;
         GameEvent.OnFoodOrderComplete -= ScoreFoodOrder;
         GameEvent.OnSodaOrderComplete -= ScoreSodaOrder;
         GameEvent.OnOrderComplete -= IncrementOrdersCompleted;

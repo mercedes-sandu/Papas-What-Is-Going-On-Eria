@@ -12,6 +12,11 @@ public static class GameEvent
     public delegate void ScoreHandler(int amount);
 
     /// <summary>
+    /// Handles the meat on the grill.
+    /// </summary>
+    public delegate void GrillHandler(float amount);
+    
+    /// <summary>
     /// Handles the player's food order.
     /// </summary>
     public delegate void FoodHandler(Dictionary<TypeOfIngredient, GameObject> necessaryIngredients,
@@ -38,6 +43,11 @@ public static class GameEvent
     public static event ScoreHandler OnScoreChange;
 
     /// <summary>
+    /// Detects when the meat on the grill is done being cooked.
+    /// </summary>
+    public static event GrillHandler OnMeatCooked;
+    
+    /// <summary>
     /// Detects when the food order has been completed.
     /// </summary>
     public static event FoodHandler OnFoodOrderComplete;
@@ -63,6 +73,12 @@ public static class GameEvent
     /// <param name="amount">The amount to modify the score by.</param>
     public static void ChangeScore(int amount) => OnScoreChange?.Invoke(amount);
 
+    /// <summary>
+    /// Completes the meat order.
+    /// </summary>
+    /// <param name="amount">The amount the meat has been cooked.</param>
+    public static void CompleteMeatCooking(float amount) => OnMeatCooked?.Invoke(amount);
+    
     /// <summary>
     /// Completes the food order.
     /// </summary>

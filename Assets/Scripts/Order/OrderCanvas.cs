@@ -58,7 +58,7 @@ public class OrderCanvas : MonoBehaviour
         int counter = 0;
         foreach (TypeOfIngredient type in TypeOfIngredient.GetValues(typeof(TypeOfIngredient)))
         {
-            if (!type.Equals(TypeOfIngredient.None))
+            if (!type.Equals(TypeOfIngredient.None) && !type.Equals(TypeOfIngredient.Soda))
             {
                 _textMeshes.Add(type, ingredientsTexts[counter]);
                 _images.Add(type, ingredientsImages[counter]);
