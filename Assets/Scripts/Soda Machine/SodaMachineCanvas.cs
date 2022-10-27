@@ -33,6 +33,14 @@ public class SodaMachineCanvas : MonoBehaviour
     private float _fillAmount;
 
     /// <summary>
+    /// 
+    /// </summary>
+    void Awake()
+    {
+        GameEvent.OnOrderComplete += ResetSodaMachineCanvas;
+    }
+    
+    /// <summary>
     /// Sets the UI canvas to be inactive.
     /// </summary>
     void Start()
@@ -49,6 +57,9 @@ public class SodaMachineCanvas : MonoBehaviour
         _pouredSoda = soda;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public void FinishPouringSoda()
     {
         // todo set _fillAmount
@@ -68,5 +79,22 @@ public class SodaMachineCanvas : MonoBehaviour
     public void CompleteSodaOrder()
     {
         GameEvent.CompleteSodaOrder(Order.Instance.GetSoda(), _pouredSoda, _fillAmount);
+    }
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    private void ResetSodaMachineCanvas()
+    {
+        _pouredSoda = null;
+        _fillAmount = 0;
+    }
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    void OnDestroy()
+    {
+        GameEvent.OnOrderComplete -= ResetSodaMachineCanvas;
     }
 }

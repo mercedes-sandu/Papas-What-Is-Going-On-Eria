@@ -75,7 +75,7 @@ public class CookerCanvas : MonoBehaviour
     private float _grillStartTime;
 
     /// <summary>
-    /// Initializes components and variables.
+    /// Initializes components and variables, subscribes to GameEvents.
     /// </summary>
     void Awake()
     {
@@ -87,6 +87,8 @@ public class CookerCanvas : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        GameEvent.OnOrderComplete += ResetCookerCanvas;
     }
     
     /// <summary>
@@ -184,5 +186,22 @@ public class CookerCanvas : MonoBehaviour
     public void CloseCanvas()
     {
         gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void ResetCookerCanvas()
+    {
+        grillPoint.sprite = null;
+        // todo: do i need to reset rotation of watch hand and color of grillpoint?
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    void OnDestroy()
+    {
+        GameEvent.OnOrderComplete -= ResetCookerCanvas;
     }
 }

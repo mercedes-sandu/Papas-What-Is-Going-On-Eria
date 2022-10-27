@@ -70,6 +70,14 @@ public class AssemblerCanvas : MonoBehaviour
     private bool _isHoldingMeat = false;
 
     /// <summary>
+    /// 
+    /// </summary>
+    void Awake()
+    {
+        GameEvent.OnOrderComplete += ResetAssemblerCanvas;
+    }
+    
+    /// <summary>
     /// Initializes necessary components and sets the canvas to be inactive.
     /// </summary>
     void Start()
@@ -186,10 +194,29 @@ public class AssemblerCanvas : MonoBehaviour
     }
 
     /// <summary>
+    /// 
+    /// </summary>
+    private void ResetAssemblerCanvas()
+    {
+        foreach (Transform child in plate.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+    /// <summary>
     /// Closes the assembler canvas.
     /// </summary>
     public void CloseCanvas()
     {
         gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    void OnDestroy()
+    {
+        GameEvent.OnOrderComplete -= ResetAssemblerCanvas;
     }
 }

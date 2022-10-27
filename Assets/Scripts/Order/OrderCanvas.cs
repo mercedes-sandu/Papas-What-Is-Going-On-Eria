@@ -51,6 +51,14 @@ public class OrderCanvas : MonoBehaviour
     // TODO: change this to say [redacted] or something
 
     /// <summary>
+    /// 
+    /// </summary>
+    void Awake()
+    {
+        GameEvent.OnOrderComplete += ResetOrderCanvas;
+    }
+
+    /// <summary>
     /// Sets the canvas to be inactive initially.
     /// </summary>
     void Start()
@@ -102,5 +110,21 @@ public class OrderCanvas : MonoBehaviour
         sodaImage.sprite = soda.GetComponent<SpriteRenderer>().sprite;
         
         gameObject.SetActive(true);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void ResetOrderCanvas()
+    {
+        gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    void OnDestroy()
+    {
+        GameEvent.OnOrderComplete -= ResetOrderCanvas;
     }
 }

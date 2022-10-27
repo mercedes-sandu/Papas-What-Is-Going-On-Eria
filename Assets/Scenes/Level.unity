@@ -1139,6 +1139,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8420157024200681450, guid: 750a9b262bb1b284e89f38bbdd900574, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420157024271629236, guid: 750a9b262bb1b284e89f38bbdd900574, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420157024321043846, guid: 750a9b262bb1b284e89f38bbdd900574, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420157024473010466, guid: 750a9b262bb1b284e89f38bbdd900574, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420157024773238556, guid: 750a9b262bb1b284e89f38bbdd900574, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420157024877495077, guid: 750a9b262bb1b284e89f38bbdd900574, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420157025018751503, guid: 750a9b262bb1b284e89f38bbdd900574, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420157025145213290, guid: 750a9b262bb1b284e89f38bbdd900574, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420157025446118147, guid: 750a9b262bb1b284e89f38bbdd900574, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420157025706671193, guid: 750a9b262bb1b284e89f38bbdd900574, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 750a9b262bb1b284e89f38bbdd900574, type: 3}
 --- !u!1001 &8867716651804655352
