@@ -61,8 +61,8 @@ public class ScoringSystem : MonoBehaviour
     private void ChangeScore(int amount)
     {
         score += amount;
-        // todo: remove this
         if (score < 0) score = 0;
+        // todo: remove this
         Debug.Log("score: " + score);
     }
 
@@ -83,7 +83,7 @@ public class ScoringSystem : MonoBehaviour
     {
         // todo: debug
         int requiredCookTime = Order.Instance.GetCookTime();
-        int cookedTime = (int)(amount / 90) + 2;
+        int cookedTime = 360 - (int)Math.Abs(amount / 90);
         // todo: remove this
         Debug.Log("amount: " + amount + " cookedTime: " + cookedTime + " requiredCookTime: " + requiredCookTime);
         GameEvent.ChangeScore(Math.Abs(cookedTime - requiredCookTime) * -5);
