@@ -83,7 +83,6 @@ public class ScoringSystem : MonoBehaviour
     {
         int requiredCookTime = Order.Instance.GetCookTime();
         int cookedTime = (int)(360 - amount) / 90 + 1;
-        Debug.Log("amount: " + amount + " cookedTime: " + cookedTime + " requiredCookTime: " + requiredCookTime);
         GameEvent.ChangeScore(Math.Abs(cookedTime - requiredCookTime) * -5);
     }
 

@@ -13,23 +13,40 @@ public class AssemblerButton : MonoBehaviour
     /// <summary>
     /// The normal button sprite.
     /// </summary>
-    [SerializeField] private Image normalImage;
+    [SerializeField] private Sprite normalImage;
     
     /// <summary>
     /// The corrupted button sprite.
     /// </summary>
-    [SerializeField] private Image corruptedImage;
+    [SerializeField] private Sprite corruptedImage;
     
-    /// <summary>
-    /// Whether the item can be used or not.
-    /// </summary>
-    private bool _canUse = true;
+    // /// <summary>
+    // /// Whether the item can be used or not.
+    // /// </summary>
+    // private bool _canUse = true;
 
     /// <summary>
-    /// 
+    /// Subscribe to GameEvents.
     /// </summary>
     void Awake()
     {
-        // todo make an event to check if player can use this item. if not, render different button
+        GameEvent.OnOrderComplete += UpdateButtons;
+    }
+
+    /// <summary>
+    /// Updates the sprite of the button to be corrupted if the item is not usable.
+    /// </summary>
+    private void UpdateButtons()
+    {
+        // todo: test
+        GetComponent<Image>().sprite = item.GetComponent<Ingredient>().CanUse() ? normalImage : corruptedImage;
+    }
+
+    /// <summary>
+    /// Unsubscribes from GameEvents.
+    /// </summary>
+    void OnDestroy()
+    {
+        GameEvent.OnOrderComplete -= UpdateButtons;
     }
 }

@@ -52,9 +52,9 @@ public class CookerCanvas : MonoBehaviour
     /// </summary>
     private readonly Color32[] _grillColors =
     {
-        new Color32(255, 0, 0, 255), 
-        new Color32(255, 85, 85, 255), 
-        new Color32(255, 170, 170, 255),
+        new Color32(255, 100, 100, 255), 
+        new Color32(255, 152, 152, 255), 
+        new Color32(255, 203, 203, 255),
         new Color32(255, 255, 255, 255), 
         new Color32(0, 0, 0, 255)
     };
@@ -195,7 +195,7 @@ public class CookerCanvas : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Resets the cooker canvas.
     /// </summary>
     private void ResetCookerCanvas()
     {
@@ -204,7 +204,7 @@ public class CookerCanvas : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Unsubscribes from GameEvents.
     /// </summary>
     void OnDestroy()
     {

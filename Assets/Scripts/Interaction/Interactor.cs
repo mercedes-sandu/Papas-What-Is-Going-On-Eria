@@ -2,24 +2,30 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 
 public class Interactor : MonoBehaviour
 {
     /// <summary>
+    /// The interaction icon.
+    /// </summary>
+    [SerializeField] private GameObject interactIcon;
+    
+    /// <summary>
     /// The transform of the player's interaction point.
     /// </summary>
-    [SerializeField] private Transform _interactionPoint;
+    [SerializeField] private Transform interactionPoint;
     
     /// <summary>
     /// The radius around the interaction point that will be checked for interactable objects.
     /// </summary>
-    [SerializeField] private float _interactionPointRadius = 0.34f;
+    [SerializeField] private float interactionPointRadius = 0.34f;
     
     /// <summary>
     /// The layer(s) that interactable objects are on.
     /// </summary>
-    [SerializeField] private LayerMask _interactableMask;
+    [SerializeField] private LayerMask interactableMask;
 
     /// <summary>
     /// The list of interactable objects the player can access.
@@ -29,23 +35,40 @@ public class Interactor : MonoBehaviour
     /// <summary>
     /// The number of interactable objects found.
     /// </summary>
-    [SerializeField] private int _numFound;
+    [SerializeField] private int numFound;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    void Start()
+    {
+        interactIcon.SetActive(false);
+    }
+    
     /// <summary>
     /// Consistently checks for interactable objects.
     /// </summary>
     void Update()
     {
-        _numFound = Physics2D.OverlapCircleNonAlloc(_interactionPoint.position, _interactionPointRadius, 
-            _colliders, _interactableMask);
+        numFound = Physics2D.OverlapCircleNonAlloc(interactionPoint.position, interactionPointRadius, 
+            _colliders, interactableMask);
 
-        if (_numFound > 0)
+        if (numFound > 0)
         {
             var interactable = _colliders[0].GetComponent<IInteractable>();
-            if (interactable != null && Input.GetKeyDown(KeyCode.E))
+            if (interactable != null)
             {
-                interactable.Interact(this);
+                interactIcon.SetActive(true);
+                
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    interactable.Interact(this);
+                }
             }
+        }
+        else
+        {
+            interactIcon.SetActive(false);
         }
     }
 
@@ -55,6 +78,6 @@ public class Interactor : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(_interactionPoint.position, _interactionPointRadius);
+        Gizmos.DrawWireSphere(interactionPoint.position, interactionPointRadius);
     }
 }
