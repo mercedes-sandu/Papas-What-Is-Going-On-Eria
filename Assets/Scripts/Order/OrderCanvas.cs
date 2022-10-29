@@ -81,7 +81,6 @@ public class OrderCanvas : MonoBehaviour
             }
         }
         
-        // gameObject.SetActive(false);
         _canvas.enabled = false;
     }
 
@@ -117,7 +116,6 @@ public class OrderCanvas : MonoBehaviour
         
         sodaImage.sprite = soda.GetComponent<SpriteRenderer>().sprite;
         
-        // gameObject.SetActive(true);
         _canvas.enabled = true;
     }
 
@@ -126,7 +124,6 @@ public class OrderCanvas : MonoBehaviour
     /// </summary>
     private void ResetOrderCanvas()
     {
-        // gameObject.SetActive(false);
         _canvas.enabled = false;
     }
 

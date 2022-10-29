@@ -51,7 +51,6 @@ public class SodaMachineCanvas : MonoBehaviour
     void Start()
     {
         _canvas = GetComponent<Canvas>();
-        // gameObject.SetActive(false);
         _canvas.enabled = false;
     }
 
@@ -77,7 +76,6 @@ public class SodaMachineCanvas : MonoBehaviour
     /// </summary>
     public void CloseCanvas()
     {
-        // gameObject.SetActive(false);
         _canvas.enabled = false;
     }
     

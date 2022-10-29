@@ -51,7 +51,7 @@ public class ScoringSystem : MonoBehaviour
     /// </summary>
     void Start()
     {
-        levelOverCanvas.SetActive(false);
+        levelOverCanvas.GetComponent<Canvas>().enabled = false;
     }
 
     /// <summary>
@@ -148,7 +148,7 @@ public class ScoringSystem : MonoBehaviour
     private void CompleteLevel()
     {
         scoreText.text = "Score: " + score;
-        levelOverCanvas.SetActive(true);
+        levelOverCanvas.GetComponent<Canvas>().enabled = true;
         Time.timeScale = 0;
     }
 

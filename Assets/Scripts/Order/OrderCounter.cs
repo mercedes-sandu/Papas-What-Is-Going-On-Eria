@@ -52,7 +52,7 @@ public class OrderCounter : MonoBehaviour, IInteractable
     /// </summary>
     private void HideOrderCanvas()
     {
-        orderCanvas.SetActive(false);
+        orderCanvas.GetComponent<Canvas>().enabled = false;
     }
 
     /// <summary>

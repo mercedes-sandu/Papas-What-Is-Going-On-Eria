@@ -103,7 +103,6 @@ public class CookerCanvas : MonoBehaviour
     {
         _canvas = GetComponent<Canvas>();
         grillPoint.color = new Color(1, 1, 1, 0);
-        // gameObject.SetActive(false);
         _canvas.enabled = false;
     }
 
@@ -192,7 +191,6 @@ public class CookerCanvas : MonoBehaviour
     /// </summary>
     public void CloseCanvas()
     {
-        // gameObject.SetActive(false);
         _canvas.enabled = false;
     }
 

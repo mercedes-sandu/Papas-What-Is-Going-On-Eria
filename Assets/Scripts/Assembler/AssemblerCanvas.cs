@@ -91,7 +91,6 @@ public class AssemblerCanvas : MonoBehaviour
         _centerX = plate.transform.position.x; // TODO: check if this is actually correct
         ghostObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
         cookedMeat.GetComponent<Image>().color = new Color(1, 1, 1, 0);
-        // gameObject.SetActive(false);
         _canvas.enabled = false;
     }
 
@@ -216,7 +215,6 @@ public class AssemblerCanvas : MonoBehaviour
     /// </summary>
     public void CloseCanvas()
     {
-        // gameObject.SetActive(false);
         _canvas.enabled = false;
     }
 

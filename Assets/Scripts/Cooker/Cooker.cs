@@ -16,7 +16,6 @@ public class Cooker : MonoBehaviour, IInteractable
     /// <returns>True if the interaction was successful, false otherwise.</returns>
     public bool Interact(Interactor interactor)
     {
-        // cookerCanvas.SetActive(true);
         cookerCanvas.GetComponent<Canvas>().enabled = true;
         return true;
     }
