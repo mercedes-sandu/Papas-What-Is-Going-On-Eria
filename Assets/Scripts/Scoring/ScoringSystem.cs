@@ -81,10 +81,8 @@ public class ScoringSystem : MonoBehaviour
     /// <param name="amount">The z-rotation of the watch hand on the cooker.</param>
     private void ScoreMeatOrder(float amount)
     {
-        // todo: debug
         int requiredCookTime = Order.Instance.GetCookTime();
-        int cookedTime = 360 - (int)Math.Abs(amount / 90);
-        // todo: remove this
+        int cookedTime = (int)(360 - amount) / 90 + 1;
         Debug.Log("amount: " + amount + " cookedTime: " + cookedTime + " requiredCookTime: " + requiredCookTime);
         GameEvent.ChangeScore(Math.Abs(cookedTime - requiredCookTime) * -5);
     }
