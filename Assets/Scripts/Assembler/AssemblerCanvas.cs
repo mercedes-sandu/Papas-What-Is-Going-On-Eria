@@ -68,6 +68,11 @@ public class AssemblerCanvas : MonoBehaviour
     /// True if the player is currently holding meat, false otherwise.
     /// </summary>
     private bool _isHoldingMeat = false;
+    
+    /// <summary>
+    /// The canvas component.
+    /// </summary>
+    private Canvas _canvas;
 
     /// <summary>
     /// 
@@ -82,10 +87,12 @@ public class AssemblerCanvas : MonoBehaviour
     /// </summary>
     void Start()
     {
+        _canvas = GetComponent<Canvas>();
         _centerX = plate.transform.position.x; // TODO: check if this is actually correct
         ghostObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
         cookedMeat.GetComponent<Image>().color = new Color(1, 1, 1, 0);
-        gameObject.SetActive(false);
+        // gameObject.SetActive(false);
+        _canvas.enabled = false;
     }
 
     /// <summary>
@@ -209,7 +216,8 @@ public class AssemblerCanvas : MonoBehaviour
     /// </summary>
     public void CloseCanvas()
     {
-        gameObject.SetActive(false);
+        // gameObject.SetActive(false);
+        _canvas.enabled = false;
     }
 
     /// <summary>

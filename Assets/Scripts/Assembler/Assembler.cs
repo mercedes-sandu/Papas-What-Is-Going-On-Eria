@@ -18,7 +18,8 @@ public class Assembler : MonoBehaviour, IInteractable
     /// <returns>True if the interaction was successful, false otherwise.</returns>
     public bool Interact(Interactor interactor)
     {
-        assemblerCanvas.SetActive(true);
+        // assemblerCanvas.SetActive(true);
+        assemblerCanvas.GetComponent<Canvas>().enabled = true;
         var canvas = assemblerCanvas.GetComponent<AssemblerCanvas>();
         canvas.AcquireMeat();
         return true;

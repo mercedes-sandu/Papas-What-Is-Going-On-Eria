@@ -273,6 +273,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1804450391068782390, guid: 72c7c683f5de6594185509c5c961f90a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1804450391068782392, guid: 72c7c683f5de6594185509c5c961f90a, type: 3}
       propertyPath: assembler
       value: 
@@ -592,6 +596,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4300654234122431014, guid: 57dc9bb12a0aea744bab1d67c077f4a9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57dc9bb12a0aea744bab1d67c077f4a9, type: 3}
 --- !u!1001 &5339643945992891117
@@ -889,6 +897,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6954748508113304310, guid: 4b8717e7f29636a4eb9cb1f0d75757d6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6954748508113304311, guid: 4b8717e7f29636a4eb9cb1f0d75757d6, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1139,6 +1151,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8420157023872568861, guid: 750a9b262bb1b284e89f38bbdd900574, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8420157024200681450, guid: 750a9b262bb1b284e89f38bbdd900574, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1246,6 +1262,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8907773005391467766, guid: 1aeed19435988be46a183056d6889acd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8907773005391467767, guid: 1aeed19435988be46a183056d6889acd, type: 3}
       propertyPath: m_Pivot.x
       value: 0

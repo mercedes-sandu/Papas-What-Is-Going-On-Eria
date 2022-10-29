@@ -31,6 +31,11 @@ public class SodaMachineCanvas : MonoBehaviour
     /// The y-value of where the soda was filled to.
     /// </summary>
     private float _fillAmount;
+    
+    /// <summary>
+    /// The canvas component.
+    /// </summary>
+    private Canvas _canvas;
 
     /// <summary>
     /// 
@@ -45,7 +50,9 @@ public class SodaMachineCanvas : MonoBehaviour
     /// </summary>
     void Start()
     {
-        gameObject.SetActive(false);
+        _canvas = GetComponent<Canvas>();
+        // gameObject.SetActive(false);
+        _canvas.enabled = false;
     }
 
     /// <summary>
@@ -70,7 +77,8 @@ public class SodaMachineCanvas : MonoBehaviour
     /// </summary>
     public void CloseCanvas()
     {
-        gameObject.SetActive(false);
+        // gameObject.SetActive(false);
+        _canvas.enabled = false;
     }
     
     /// <summary>

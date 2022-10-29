@@ -10,6 +10,11 @@ public class ServingCounterCanvas : MonoBehaviour
     private Animator _animator;
     
     /// <summary>
+    /// The canvas component.
+    /// </summary>
+    private Canvas _canvas;
+    
+    /// <summary>
     /// Subscribes to GameEvents.
     /// </summary>
     void Awake()
@@ -22,8 +27,10 @@ public class ServingCounterCanvas : MonoBehaviour
     /// </summary>
     void Start()
     {
+        _canvas = GetComponent<Canvas>();
         _animator = GetComponent<Animator>();
         _animator.SetBool("IsPopping", false);
+        _canvas.enabled = false;
     }
     
     /// <summary>
@@ -31,6 +38,7 @@ public class ServingCounterCanvas : MonoBehaviour
     /// </summary>
     private void AnimateCanvas()
     {
+        _canvas.enabled = true;
         _animator.SetBool("IsPopping", true);
     }
     
@@ -40,6 +48,7 @@ public class ServingCounterCanvas : MonoBehaviour
     public void StopAnimateCanvas()
     {
         _animator.SetBool("IsPopping", false);
+        _canvas.enabled = false;
     }
     
     /// <summary>

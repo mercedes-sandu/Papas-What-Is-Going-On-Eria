@@ -51,6 +51,11 @@ public class OrderCanvas : MonoBehaviour
     // TODO: change this to say [redacted] or something
 
     /// <summary>
+    /// The canvas component.
+    /// </summary>
+    private Canvas _canvas;
+
+    /// <summary>
     /// 
     /// </summary>
     void Awake()
@@ -63,6 +68,8 @@ public class OrderCanvas : MonoBehaviour
     /// </summary>
     void Start()
     {
+        _canvas = GetComponent<Canvas>();
+        
         int counter = 0;
         foreach (TypeOfIngredient type in TypeOfIngredient.GetValues(typeof(TypeOfIngredient)))
         {
@@ -74,7 +81,8 @@ public class OrderCanvas : MonoBehaviour
             }
         }
         
-        gameObject.SetActive(false);
+        // gameObject.SetActive(false);
+        _canvas.enabled = false;
     }
 
     /// <summary>
@@ -109,7 +117,8 @@ public class OrderCanvas : MonoBehaviour
         
         sodaImage.sprite = soda.GetComponent<SpriteRenderer>().sprite;
         
-        gameObject.SetActive(true);
+        // gameObject.SetActive(true);
+        _canvas.enabled = true;
     }
 
     /// <summary>
@@ -117,7 +126,8 @@ public class OrderCanvas : MonoBehaviour
     /// </summary>
     private void ResetOrderCanvas()
     {
-        gameObject.SetActive(false);
+        // gameObject.SetActive(false);
+        _canvas.enabled = false;
     }
 
     /// <summary>

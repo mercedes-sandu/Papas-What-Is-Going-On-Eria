@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6954748508113304308}
   - component: {fileID: 6954748508113304304}
   - component: {fileID: 6306017980823440423}
+  - component: {fileID: 5917999279348837178}
   m_Layer: 5
   m_Name: Serving Counter Canvas
   m_TagString: Untagged
@@ -136,6 +137,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46efe524b3c0f3f4f8cb582fd4cd60e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &5917999279348837178
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6954748508113304299}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6954748508496622720
 GameObject:
   m_ObjectHideFlags: 0

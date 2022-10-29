@@ -73,6 +73,11 @@ public class CookerCanvas : MonoBehaviour
     /// The time that the object has been placed.
     /// </summary>
     private float _grillStartTime;
+    
+    /// <summary>
+    /// The canvas component.
+    /// </summary>
+    private Canvas _canvas;
 
     /// <summary>
     /// Initializes components and variables, subscribes to GameEvents.
@@ -96,8 +101,10 @@ public class CookerCanvas : MonoBehaviour
     /// </summary>
     void Start()
     {
+        _canvas = GetComponent<Canvas>();
         grillPoint.color = new Color(1, 1, 1, 0);
-        gameObject.SetActive(false);
+        // gameObject.SetActive(false);
+        _canvas.enabled = false;
     }
 
     /// <summary>
@@ -185,7 +192,8 @@ public class CookerCanvas : MonoBehaviour
     /// </summary>
     public void CloseCanvas()
     {
-        gameObject.SetActive(false);
+        // gameObject.SetActive(false);
+        _canvas.enabled = false;
     }
 
     /// <summary>

@@ -2042,6 +2042,7 @@ GameObject:
   - component: {fileID: 4300654234122431015}
   - component: {fileID: 4300654234122431008}
   - component: {fileID: 4300654234122431012}
+  - component: {fileID: 8894872839190114771}
   m_Layer: 5
   m_Name: Order Canvas
   m_TagString: Untagged
@@ -2164,6 +2165,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0765852ce5b29e34f95f9f384b1eaa13, type: 3}
   cookTimeImage: {fileID: 4300654233815852063}
   sodaImage: {fileID: 4300654232646015450}
+--- !u!225 &8894872839190114771
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4300654234122431009}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4300654234157443595
 GameObject:
   m_ObjectHideFlags: 0
