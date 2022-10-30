@@ -14709,6 +14709,26 @@ PrefabInstance:
       propertyPath: orderCanvas
       value: 
       objectReference: {fileID: 570624450}
+    - target: {fileID: 3291404402512346568, guid: e153ffc4bd41cf645bf42f3f3287a7bd, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.9995117
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291404402512346569, guid: e153ffc4bd41cf645bf42f3f3287a7bd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1e8b69d06984a5040ad86ea81f091442, type: 3}
+    - target: {fileID: 3291404402512346569, guid: e153ffc4bd41cf645bf42f3f3287a7bd, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291404402512346569, guid: e153ffc4bd41cf645bf42f3f3287a7bd, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291404402512346569, guid: e153ffc4bd41cf645bf42f3f3287a7bd, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3291404402512346570, guid: e153ffc4bd41cf645bf42f3f3287a7bd, type: 3}
       propertyPath: m_RootOrder
       value: 14
