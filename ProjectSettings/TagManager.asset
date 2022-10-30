@@ -42,7 +42,10 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
+  - name: Floor
+    uniqueID: 4199661115
+    locked: 0
+  - name: Wall
     uniqueID: 3218639489
     locked: 0
   - name: Furniture
