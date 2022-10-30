@@ -38,7 +38,7 @@ public class PlayerControl : MonoBehaviour
     /// <summary>
     /// Checks for input to move the player.
     /// </summary>
-    void FixedUpdate()
+    void Update()
     {
         Vector2 dir = Vector2.zero;
 
