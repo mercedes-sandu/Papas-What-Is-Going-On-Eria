@@ -97,4 +97,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee55d9c75c9cb6f4ebf02ba17ad67007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneWidth: 20
+  sceneWidth: 15
