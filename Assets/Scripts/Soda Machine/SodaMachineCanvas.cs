@@ -6,6 +6,11 @@ using UnityEngine.UI;
 public class SodaMachineCanvas : MonoBehaviour
 {
     /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField] private GameObject[] sodaButtons;
+    
+    /// <summary>
     /// The soda cup.
     /// </summary>
     [SerializeField] private GameObject cup;
@@ -19,6 +24,11 @@ public class SodaMachineCanvas : MonoBehaviour
     /// The soda stream.
     /// </summary>
     [SerializeField] private Image sodaStream;
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField] private Image pouredSoda;
     
     // todo: make the cup mask
 
@@ -57,10 +67,27 @@ public class SodaMachineCanvas : MonoBehaviour
     /// <summary>
     /// Pours the specified soda.
     /// </summary>
-    /// <param name="soda">The soda to be poured.</param>
-    public void PourSoda(GameObject soda)
+    /// <param name="index">The index of the soda to be poured.</param>
+    public void PourSoda(int index)
     {
-        _pouredSoda = soda;
+        
+    }
+
+    /// <summary>
+    /// Sets the soda to be poured.
+    /// </summary>
+    /// <param name="index">The index of the soda to be poured.</param>
+    public void SetSoda(int index)
+    {
+        _pouredSoda = sodaButtons[index];
+        // pouredSoda.sprite = _pouredSoda.GetComponent<>()
+        for (int i = 0; i < sodaButtons.Length; i++)
+        {
+            if (i != index)
+            {
+                sodaButtons[i].GetComponent<Button>().interactable = false;
+            }
+        }
     }
 
     /// <summary>

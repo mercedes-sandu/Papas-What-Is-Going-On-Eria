@@ -243,6 +243,10 @@ public class AssemblerCanvas : MonoBehaviour
     /// </summary>
     public void CompleteFoodOrder()
     {
+        foreach (Transform child in plate.transform)
+        {
+            child.gameObject.GetComponent<Image>().enabled = false;
+        }
         GameEvent.CompleteFoodOrder(Order.Instance.GetIngredientsDict(), _stackedItems, xDistances);
     }
 
