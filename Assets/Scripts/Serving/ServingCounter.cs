@@ -11,7 +11,10 @@ public class ServingCounter : MonoBehaviour, IInteractable
     /// <returns>True if the interaction was successful, false otherwise.</returns>
     public bool Interact(Interactor interactor)
     {
-        GameEvent.CompleteOrder();
+        if (Order.Instance.GetIngredientsDict().Count > 0)
+        {
+            GameEvent.CompleteOrder();
+        }
         return true;
     }
 }
