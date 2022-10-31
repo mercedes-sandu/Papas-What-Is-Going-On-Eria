@@ -27,6 +27,21 @@ public class AssemblerCanvas : MonoBehaviour
     /// The ghost object which follows the player's cursor.
     /// </summary>
     [SerializeField] private GameObject ghostObject;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField] private GameObject garbageCan;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField] private Sprite closedGarbage;
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField] private Sprite openGarbage;
     
     /// <summary>
     /// The list of currently stacked items in the assembler canvas.
@@ -68,6 +83,11 @@ public class AssemblerCanvas : MonoBehaviour
     /// True if the player is currently holding meat, false otherwise.
     /// </summary>
     private bool _isHoldingMeat = false;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private bool _isThrowingAway = false;
     
     /// <summary>
     /// The canvas component.
@@ -116,7 +136,7 @@ public class AssemblerCanvas : MonoBehaviour
         
         ghostObject.transform.position = Input.mousePosition;
 
-        if (_placingObject && Input.GetMouseButtonDown(0))
+        if (_placingObject && !_isThrowingAway && Input.GetMouseButtonDown(0))
         {
             _placingObject = false;
             var placedObject = Instantiate(ghostObject, ghostObject.transform.position, Quaternion.identity,
@@ -189,6 +209,33 @@ public class AssemblerCanvas : MonoBehaviour
         _nameOfPlacedObject = item.name;
         _currentIngredientType = item.GetComponent<Ingredient>().GetTypeOfIngredient();
         _placingObject = true;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void HoverGarbageCan()
+    {
+        _isThrowingAway = true;
+        garbageCan.GetComponent<Image>().sprite = openGarbage;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void StopHoveringGarbageCan()
+    {
+        _isThrowingAway = false;
+        garbageCan.GetComponent<Image>().sprite = closedGarbage;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void TrashItem()
+    {
+        _placingObject = false;
+        _currentIngredientType = TypeOfIngredient.None;
     }
 
     /// <summary>
