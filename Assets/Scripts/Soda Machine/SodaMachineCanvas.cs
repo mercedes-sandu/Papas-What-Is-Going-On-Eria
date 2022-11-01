@@ -13,7 +13,7 @@ public class SodaMachineCanvas : MonoBehaviour
     /// <summary>
     /// The soda liquid images.
     /// </summary>
-    [SerializeField] private Texture[] sodaImages;
+    [SerializeField] private Sprite[] sodaImages;
 
     /// <summary>
     /// The soda stream.
@@ -21,19 +21,14 @@ public class SodaMachineCanvas : MonoBehaviour
     [SerializeField] private Image sodaStream;
 
     /// <summary>
+    /// The soda graphic in the game.
+    /// </summary>
+    [SerializeField] private GameObject soda;
+
+    /// <summary>
     /// The soda prefab which is being poured.
     /// </summary>
     private GameObject _pouredSoda;
-    
-    /// <summary>
-    /// The list of colors for the soda stream.
-    /// </summary>
-    private readonly Color32[] _sodaColors =
-    {
-        new Color32(255, 140, 0, 255), 
-        new Color32(75, 0, 130, 255), 
-        new Color32(0, 255, 0, 255)
-    };
 
     /// <summary>
     /// The canvas component.
@@ -58,7 +53,9 @@ public class SodaMachineCanvas : MonoBehaviour
     /// </summary>
     void Start()
     {
+        sodaStream.color = new Color(1, 1, 1, 0);
         _anim = GetComponent<Animator>();
+        _anim.SetBool("IsFilling", false);
         _canvas = GetComponent<Canvas>();
         _canvas.enabled = false;
     }
@@ -66,34 +63,27 @@ public class SodaMachineCanvas : MonoBehaviour
     /// <summary>
     /// Sets the soda to be poured and triggers the filling animation.
     /// </summary>
-    /// <param name="soda">The soda which is being poured.</param>
-    public void PourSoda(GameObject soda)
+    /// <param name="selectedSoda">The soda which is being poured.</param>
+    public void PourSoda(GameObject selectedSoda)
     {
-        _pouredSoda = soda;
+        _pouredSoda = selectedSoda;
         foreach (var button in sodaButtons)
         {
             button.GetComponent<Button>().interactable = false;
         }
+        _anim.SetBool("IsFilling", true);
     }
     
     /// <summary>
-    /// 
+    /// Assigns the appropriate image based off of the index of the soda.
     /// </summary>
     /// <param name="index"></param>
     public void SetSodaIndex(int index)
     {
-        _pouredSoda.GetComponent<RawImage>().texture = sodaImages[index];
-        sodaStream.color = _sodaColors[index];
+        soda.GetComponent<Image>().sprite = sodaImages[index];
+        sodaStream.GetComponent<Image>().sprite = sodaImages[index];
     }
 
-    /// <summary>
-    /// Stops the filling animation.
-    /// </summary>
-    public void FinishPouringSoda()
-    {
-        
-    }
-    
     /// <summary>
     /// Closes the soda machine canvas.
     /// </summary>
@@ -108,6 +98,7 @@ public class SodaMachineCanvas : MonoBehaviour
     public void CompleteSodaOrder()
     {
         GameEvent.CompleteSodaOrder(Order.Instance.GetSoda(), _pouredSoda);
+        _anim.SetBool("IsFilling", false);
     }
     
     /// <summary>
@@ -120,7 +111,8 @@ public class SodaMachineCanvas : MonoBehaviour
             button.GetComponent<Button>().interactable = false;
         }
         
-        // todo: reset anim bools
+        sodaStream.color = new Color(1, 1, 1, 0);
+        _anim.SetBool("IsFilling", false);
     }
     
     /// <summary>
