@@ -117,26 +117,16 @@ public class ScoringSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// Scores the soda order according to accuracy of soda chosen and height difference from the fill line.
+    /// Scores the soda order according to accuracy of soda chosen.
     /// </summary>
     /// <param name="necessarySoda">The necessary soda for this order.</param>
     /// <param name="usedSoda">The used soda for this order.</param>
-    /// <param name="heightDifference">The difference in y-position from the fill line.</param>
-    private void ScoreSodaOrder(GameObject necessarySoda, GameObject usedSoda, float heightDifference)
+    private void ScoreSodaOrder(GameObject necessarySoda, GameObject usedSoda)
     {
-        int decrementValue = 0;
-
-        // Check if the correct soda was used.
         if (!ReferenceEquals(necessarySoda, usedSoda))
         {
-            decrementValue -= 10;
+            GameEvent.ChangeScore(-10);
         }
-
-        // Check if the soda was filled to the correct height.
-        decrementValue -= (int)heightDifference;
-
-        // Change the score.
-        GameEvent.ChangeScore(decrementValue);
     }
 
     /// <summary>

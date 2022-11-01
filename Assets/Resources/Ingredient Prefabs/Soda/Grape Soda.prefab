@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7662887706312792198}
   - component: {fileID: 2401581252490934960}
   m_Layer: 0
-  m_Name: Grarpe Soda
+  m_Name: Grape Soda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

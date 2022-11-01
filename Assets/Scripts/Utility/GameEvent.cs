@@ -25,7 +25,7 @@ public static class GameEvent
     /// <summary>
     /// Handles the player's soda order.
     /// </summary>
-    public delegate void SodaHandler(GameObject necessarySoda, GameObject usedSoda, float heightDifference);
+    public delegate void SodaHandler(GameObject necessarySoda, GameObject usedSoda);
     
     /// <summary>
     /// Handles the player's current order.
@@ -94,9 +94,8 @@ public static class GameEvent
     /// </summary>
     /// <param name="necessarySoda">The necessary soda for this order.</param>
     /// <param name="usedSoda">The soda used for this order.</param>
-    /// <param name="heightDifference">The difference in y-position of the soda from the fill line.</param>
-    public static void CompleteSodaOrder(GameObject necessarySoda, GameObject usedSoda, float heightDifference) => 
-        OnSodaOrderComplete?.Invoke(necessarySoda, usedSoda, heightDifference);
+    public static void CompleteSodaOrder(GameObject necessarySoda, GameObject usedSoda) => 
+        OnSodaOrderComplete?.Invoke(necessarySoda, usedSoda);
     
     /// <summary>
     /// Completes the current order.

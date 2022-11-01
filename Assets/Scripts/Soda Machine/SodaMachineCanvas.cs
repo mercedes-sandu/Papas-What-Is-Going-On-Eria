@@ -6,49 +6,47 @@ using UnityEngine.UI;
 public class SodaMachineCanvas : MonoBehaviour
 {
     /// <summary>
-    /// 
+    /// The soda buttons.
     /// </summary>
     [SerializeField] private GameObject[] sodaButtons;
-    
-    /// <summary>
-    /// The soda cup.
-    /// </summary>
-    [SerializeField] private GameObject cup;
 
     /// <summary>
-    /// The fill line for the soda cup.
+    /// The soda liquid images.
     /// </summary>
-    [SerializeField] private GameObject fillLine;
+    [SerializeField] private Texture[] sodaImages;
 
     /// <summary>
     /// The soda stream.
     /// </summary>
     [SerializeField] private Image sodaStream;
-    
-    /// <summary>
-    /// 
-    /// </summary>
-    [SerializeField] private Image pouredSoda;
-    
-    // todo: make the cup mask
 
     /// <summary>
-    /// The soda being poured.
+    /// The soda prefab which is being poured.
     /// </summary>
     private GameObject _pouredSoda;
     
     /// <summary>
-    /// The y-value of where the soda was filled to.
+    /// The list of colors for the soda stream.
     /// </summary>
-    private float _fillAmount;
-    
+    private readonly Color32[] _sodaColors =
+    {
+        new Color32(255, 140, 0, 255), 
+        new Color32(75, 0, 130, 255), 
+        new Color32(0, 255, 0, 255)
+    };
+
     /// <summary>
     /// The canvas component.
     /// </summary>
     private Canvas _canvas;
 
     /// <summary>
-    /// 
+    /// The animator component.
+    /// </summary>
+    private Animator _anim;
+
+    /// <summary>
+    /// Subscribes to GameEvents.
     /// </summary>
     void Awake()
     {
@@ -60,42 +58,40 @@ public class SodaMachineCanvas : MonoBehaviour
     /// </summary>
     void Start()
     {
+        _anim = GetComponent<Animator>();
         _canvas = GetComponent<Canvas>();
         _canvas.enabled = false;
     }
 
     /// <summary>
-    /// Pours the specified soda.
+    /// Sets the soda to be poured and triggers the filling animation.
     /// </summary>
-    /// <param name="index">The index of the soda to be poured.</param>
-    public void PourSoda(int index)
+    /// <param name="soda">The soda which is being poured.</param>
+    public void PourSoda(GameObject soda)
     {
-        
-    }
-
-    /// <summary>
-    /// Sets the soda to be poured.
-    /// </summary>
-    /// <param name="index">The index of the soda to be poured.</param>
-    public void SetSoda(int index)
-    {
-        _pouredSoda = sodaButtons[index];
-        // pouredSoda.sprite = _pouredSoda.GetComponent<>()
-        for (int i = 0; i < sodaButtons.Length; i++)
+        _pouredSoda = soda;
+        foreach (var button in sodaButtons)
         {
-            if (i != index)
-            {
-                sodaButtons[i].GetComponent<Button>().interactable = false;
-            }
+            button.GetComponent<Button>().interactable = false;
         }
     }
-
+    
     /// <summary>
     /// 
     /// </summary>
+    /// <param name="index"></param>
+    public void SetSodaIndex(int index)
+    {
+        _pouredSoda.GetComponent<RawImage>().texture = sodaImages[index];
+        sodaStream.color = _sodaColors[index];
+    }
+
+    /// <summary>
+    /// Stops the filling animation.
+    /// </summary>
     public void FinishPouringSoda()
     {
-        // todo set _fillAmount
+        
     }
     
     /// <summary>
@@ -111,20 +107,24 @@ public class SodaMachineCanvas : MonoBehaviour
     /// </summary>
     public void CompleteSodaOrder()
     {
-        GameEvent.CompleteSodaOrder(Order.Instance.GetSoda(), _pouredSoda, _fillAmount);
+        GameEvent.CompleteSodaOrder(Order.Instance.GetSoda(), _pouredSoda);
     }
     
     /// <summary>
-    /// 
+    /// Resets the canvas.
     /// </summary>
     private void ResetSodaMachineCanvas()
     {
-        _pouredSoda = null;
-        _fillAmount = 0;
+        foreach (var button in sodaButtons)
+        {
+            button.GetComponent<Button>().interactable = false;
+        }
+        
+        // todo: reset anim bools
     }
     
     /// <summary>
-    /// 
+    /// Unsubscribes from GameEvents.
     /// </summary>
     void OnDestroy()
     {
