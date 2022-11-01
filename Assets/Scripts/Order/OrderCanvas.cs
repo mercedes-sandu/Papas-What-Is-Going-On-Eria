@@ -36,7 +36,7 @@ public class OrderCanvas : MonoBehaviour
     /// <summary>
     /// The dictionary of ingredients mapped to their text objects.
     /// </summary>
-    private Dictionary<TypeOfIngredient, TextMeshProUGUI> _textMeshes =
+    private readonly Dictionary<TypeOfIngredient, TextMeshProUGUI> _textMeshes =
         new Dictionary<TypeOfIngredient, TextMeshProUGUI>();
     
     /// <summary>
@@ -55,7 +55,7 @@ public class OrderCanvas : MonoBehaviour
     private Canvas _canvas;
 
     /// <summary>
-    /// 
+    /// Subscribes to GameEvents.
     /// </summary>
     void Awake()
     {
@@ -119,7 +119,7 @@ public class OrderCanvas : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Resets the canvas.
     /// </summary>
     private void ResetOrderCanvas()
     {
@@ -127,7 +127,7 @@ public class OrderCanvas : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Unsubscribes from GameEvents.
     /// </summary>
     void OnDestroy()
     {

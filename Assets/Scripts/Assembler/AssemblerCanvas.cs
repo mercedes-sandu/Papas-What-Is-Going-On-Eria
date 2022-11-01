@@ -29,17 +29,17 @@ public class AssemblerCanvas : MonoBehaviour
     [SerializeField] private GameObject ghostObject;
 
     /// <summary>
-    /// 
+    /// The garbage can.
     /// </summary>
     [SerializeField] private GameObject garbageCan;
 
     /// <summary>
-    /// 
+    /// The closed garbage can sprite.
     /// </summary>
     [SerializeField] private Sprite closedGarbage;
     
     /// <summary>
-    /// 
+    /// The open garbage can sprite.
     /// </summary>
     [SerializeField] private Sprite openGarbage;
     
@@ -100,7 +100,7 @@ public class AssemblerCanvas : MonoBehaviour
     private bool _isHoldingMeat = false;
 
     /// <summary>
-    /// 
+    /// True if the player is currently holding an object above the garbage can, false otherwise.
     /// </summary>
     private bool _isThrowingAway = false;
     
@@ -110,7 +110,7 @@ public class AssemblerCanvas : MonoBehaviour
     private Canvas _canvas;
 
     /// <summary>
-    /// 
+    /// Subscribes to GameEvents.
     /// </summary>
     void Awake()
     {
@@ -231,7 +231,7 @@ public class AssemblerCanvas : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Changes the sprite of the garbage can to be open.
     /// </summary>
     public void HoverGarbageCan()
     {
@@ -240,7 +240,7 @@ public class AssemblerCanvas : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Changes the sprite of the garbage can to be closed.
     /// </summary>
     public void StopHoveringGarbageCan()
     {
@@ -271,7 +271,7 @@ public class AssemblerCanvas : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Resets the canvas.
     /// </summary>
     private void ResetAssemblerCanvas()
     {
@@ -290,7 +290,7 @@ public class AssemblerCanvas : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Unsubscribes from GameEvents.
     /// </summary>
     void OnDestroy()
     {

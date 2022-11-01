@@ -62,8 +62,6 @@ public class ScoringSystem : MonoBehaviour
     {
         score += amount;
         if (score < 0) score = 0;
-        // todo: remove this
-        Debug.Log("score: " + score);
     }
 
     /// <summary>

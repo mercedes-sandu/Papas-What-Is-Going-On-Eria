@@ -19,11 +19,6 @@ public class AssemblerButton : MonoBehaviour
     /// The corrupted button sprite.
     /// </summary>
     [SerializeField] private Sprite corruptedImage;
-    
-    // /// <summary>
-    // /// Whether the item can be used or not.
-    // /// </summary>
-    // private bool _canUse = true;
 
     /// <summary>
     /// Subscribe to GameEvents.

@@ -200,7 +200,6 @@ public class CookerCanvas : MonoBehaviour
     private void ResetCookerCanvas()
     {
         grillPoint.sprite = null;
-        // todo: do i need to reset rotation of watch hand and color of grillpoint?
     }
 
     /// <summary>

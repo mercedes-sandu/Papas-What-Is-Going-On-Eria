@@ -30,18 +30,18 @@ public class Order : MonoBehaviour
     private GameObject _soda;
     
     /// <summary>
-    /// 
+    /// The ingredient prefabs.
     /// </summary>
     private readonly Dictionary<TypeOfIngredient, List<GameObject>> _ingredientPrefabs 
         = new Dictionary<TypeOfIngredient, List<GameObject>>();
     
     /// <summary>
-    /// 
+    /// The soda prefabs.
     /// </summary>
     private GameObject[] _sodaPrefabs;
 
     /// <summary>
-    /// 
+    /// The ingredient types.
     /// </summary>
     private readonly List<TypeOfIngredient> _types = new List<TypeOfIngredient>();
 

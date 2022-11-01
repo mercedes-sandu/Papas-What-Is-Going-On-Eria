@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerControl : MonoBehaviour
@@ -9,7 +10,7 @@ public class PlayerControl : MonoBehaviour
     /// <summary>
     /// The player's movement speed.
     /// </summary>
-    [SerializeField] private float _speed = 5f;
+    [SerializeField] private float speed = 5f;
 
     /// <summary>
     /// The direction in which the player is facing.
@@ -36,7 +37,7 @@ public class PlayerControl : MonoBehaviour
     }
 
     /// <summary>
-    /// Checks for input to move the player.
+    /// Checks for input to move and animate the player.
     /// </summary>
     void Update()
     {
@@ -65,9 +66,13 @@ public class PlayerControl : MonoBehaviour
         }
         PlayAnimation(dir);
 
-        _rb.velocity = dir.normalized * _speed;
+        _rb.velocity = dir.normalized * speed;
     }
 
+    /// <summary>
+    /// Animates the player.
+    /// </summary>
+    /// <param name="direction">The direction in which the player is facing.</param>
     private void PlayAnimation(Vector2 direction)
     {
         switch (direction.y)

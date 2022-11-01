@@ -38,7 +38,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private int numFound;
 
     /// <summary>
-    /// 
+    /// Sets the interact icon to disabled.
     /// </summary>
     void Start()
     {
