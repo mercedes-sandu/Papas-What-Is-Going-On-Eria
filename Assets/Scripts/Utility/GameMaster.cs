@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Scripts;
+using TMPro;
 using UnityEngine;
 
 public class GameMaster : MonoBehaviour
@@ -11,16 +12,26 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private float levelTime = 300f;
 
     /// <summary>
+    /// The timer text.
+    /// </summary>
+    [SerializeField] private TextMeshProUGUI timerText;
+    
+    /// <summary>
     /// The time at which the level began.
     /// </summary>
     private float _startTime;
+
+    /// <summary>
+    /// The amount of time left in the level.
+    /// </summary>
+    private float _timeLeft;
 
     /// <summary>
     /// Sets the level start time.
     /// </summary>
     void Start()
     {
-        _startTime = Time.time;
+        _timeLeft = levelTime;
     }
 
     /// <summary>
@@ -28,10 +39,20 @@ public class GameMaster : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (Time.time - _startTime >= levelTime)
+        if (_timeLeft > 0)
         {
-            // TODO: trigger game over
-            // todo: do this with a coroutine if possible
+            _timeLeft -= Time.deltaTime;
+
+            string minutesLeft = Mathf.FloorToInt(_timeLeft / 60).ToString();
+            string seconds = (_timeLeft % 60).ToString("F0");
+            seconds = seconds.Length == 1 ? "0" + seconds : seconds;
+
+            timerText.text = minutesLeft + ":" + seconds;
+        }
+        else
+        {
+            timerText.text = "0:00";
+            GameEvent.CompleteLevel();
         }
     }
 }

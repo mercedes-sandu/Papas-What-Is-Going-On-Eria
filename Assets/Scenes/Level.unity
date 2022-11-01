@@ -9146,6 +9146,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1247342256 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6029561396795781032, guid: 2b199703e8e896845844e3fe6c7ab912, type: 3}
+  m_PrefabInstance: {fileID: 6424977413926934151}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1256732071
 GameObject:
   m_ObjectHideFlags: 0
@@ -15302,6 +15313,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Master
       objectReference: {fileID: 0}
+    - target: {fileID: 2679841761942988123, guid: 899b0f8e09f9e4b4690cec8bc39f21b5, type: 3}
+      propertyPath: timerText
+      value: 
+      objectReference: {fileID: 1247342256}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 899b0f8e09f9e4b4690cec8bc39f21b5, type: 3}
 --- !u!1001 &3291404402541470272
@@ -15764,30 +15779,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6849580542920073269, guid: d5ab6359448fa774a9aa77cb4d05d3a1, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: fcb31126df8eff747bf2cb594e659d74, type: 3}
-    - target: {fileID: 6849580542920073269, guid: d5ab6359448fa774a9aa77cb4d05d3a1, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6849580542920073269, guid: d5ab6359448fa774a9aa77cb4d05d3a1, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6849580542920073269, guid: d5ab6359448fa774a9aa77cb4d05d3a1, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6849580542920073269, guid: d5ab6359448fa774a9aa77cb4d05d3a1, type: 3}
-      propertyPath: m_SortingLayer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6849580542920073269, guid: d5ab6359448fa774a9aa77cb4d05d3a1, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -803576167
-      objectReference: {fileID: 0}
     - target: {fileID: 6849580542920073270, guid: d5ab6359448fa774a9aa77cb4d05d3a1, type: 3}
       propertyPath: m_Name
       value: Serving Counter
@@ -16057,7 +16048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8420157023872568861, guid: 750a9b262bb1b284e89f38bbdd900574, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8420157024200681450, guid: 750a9b262bb1b284e89f38bbdd900574, type: 3}
       propertyPath: m_IsActive
@@ -16353,6 +16344,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9067519654743353219, guid: adede0cc8af3a22419a39d08e93861c4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9067519654743353244, guid: adede0cc8af3a22419a39d08e93861c4, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9067519654743353247, guid: adede0cc8af3a22419a39d08e93861c4, type: 3}

@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 867ba2c59b13bec45a4b2c6e89e24d96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelTime: 0
+  levelTime: 300
+  timerText: {fileID: 0}
 --- !u!114 &2679841761942988121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,3 +59,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 732123ecce1dbf749bbc37ecfd2d2bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelOverCanvas: {fileID: 0}
+  scoreText: {fileID: 0}
+  ordersCompletedText: {fileID: 0}
+  score: 0
+  ordersCompleted: 0
