@@ -53,6 +53,21 @@ public class AssemblerCanvas : MonoBehaviour
     /// The list of differences in the x-positions of the stacked items from the center value.
     /// </summary>
     [SerializeField] private List<float> xDistances;
+    
+    /// <summary>
+    /// The pop audio clip.
+    /// </summary>
+    [SerializeField] private AudioClip popClip;
+    
+    /// <summary>
+    /// The trash can audio clip.
+    /// </summary>
+    [SerializeField] private AudioClip trashClip;
+    
+    /// <summary>
+    /// The audio source.
+    /// </summary>
+    private AudioSource _audioSource;
 
     /// <summary>
     /// The center x-position of the plate.
@@ -107,6 +122,7 @@ public class AssemblerCanvas : MonoBehaviour
     /// </summary>
     void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         _canvas = GetComponent<Canvas>();
         _centerX = plate.transform.position.x; // TODO: check if this is actually correct
         ghostObject.GetComponent<Image>().color = new Color(1, 1, 1, 0);
@@ -138,6 +154,7 @@ public class AssemblerCanvas : MonoBehaviour
 
         if (_placingObject && !_isThrowingAway && Input.GetMouseButtonDown(0))
         {
+            _audioSource.PlayOneShot(popClip, 0.5f);
             _placingObject = false;
             var placedObject = Instantiate(ghostObject, ghostObject.transform.position, Quaternion.identity,
                 plate.transform);
@@ -179,6 +196,7 @@ public class AssemblerCanvas : MonoBehaviour
     /// </summary>
     public void CreateMeat()
     {
+        _audioSource.PlayOneShot(popClip, 0.5f);
         var meat = CookerCanvas.Instance.GetCookedMeat();
         meat.AddComponent<Ingredient>();
         meat.GetComponent<Ingredient>().SetTypeOfIngredient(TypeOfIngredient.Meat);
@@ -193,6 +211,7 @@ public class AssemblerCanvas : MonoBehaviour
     /// <param name="item">The item to be created.</param>
     public void CreateItem(GameObject item)
     {
+        _audioSource.PlayOneShot(popClip, 0.5f);
         ghostObject.GetComponent<Image>().sprite = item.GetComponent<SpriteRenderer>() != null 
             ? item.GetComponent<SpriteRenderer>().sprite : item.GetComponent<Image>().sprite;
 
@@ -234,6 +253,7 @@ public class AssemblerCanvas : MonoBehaviour
     /// </summary>
     public void TrashItem()
     {
+        _audioSource.PlayOneShot(trashClip, 0.5f);
         _placingObject = false;
         _currentIngredientType = TypeOfIngredient.None;
     }
