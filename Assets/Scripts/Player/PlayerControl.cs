@@ -63,13 +63,51 @@ public class PlayerControl : MonoBehaviour
             dir.x = -1f;
             _direction = Vector2.left;
         }
+        PlayAnimation(dir);
 
         _rb.velocity = dir.normalized * _speed;
     }
 
-    /// <summary>
-    /// Returns the direction in which the player is facing.
-    /// </summary>
-    /// <returns>Player direction.</returns>
-    public Vector2 GetDirection() => _direction;
+    private void PlayAnimation(Vector2 direction)
+    {
+        switch (direction.y)
+        {
+            case -1:
+                _anim.Play("PlayerFrontWalk");
+                break;
+            case 1:
+                _anim.Play("PlayerBackWalk");
+                break;
+            default:
+                switch (direction.x)
+                {
+                    case -1:
+                        _anim.Play("PlayerLeftWalk");
+                        break;
+                    case 1:
+                        _anim.Play("PlayerRightWalk");
+                        break;
+                    default:
+                        if (_direction == Vector2.right)
+                        {
+                            _anim.Play("PlayerRightIdle");
+                        }
+                        else if (_direction == Vector2.left)
+                        {
+                            _anim.Play("PlayerLeftIdle");
+                        }
+                        else if (_direction == Vector2.up)
+                        {
+                            _anim.Play("PlayerBackIdle");
+                        }
+                        else
+                        {
+                            _anim.Play("PlayerFrontIdle");
+                        }
+
+                        break;
+                }
+                break;
+        }
+    }
 }
