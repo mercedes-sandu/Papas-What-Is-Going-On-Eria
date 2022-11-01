@@ -61,6 +61,17 @@ public class SodaMachineCanvas : MonoBehaviour
     }
 
     /// <summary>
+    /// Detects input.
+    /// </summary>
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseCanvas();
+        }
+    }
+
+    /// <summary>
     /// Sets the soda to be poured and triggers the filling animation.
     /// </summary>
     /// <param name="selectedSoda">The soda which is being poured.</param>
