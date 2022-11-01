@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 867ba2c59b13bec45a4b2c6e89e24d96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelTime: 300
+  levelTime: 180
   timerText: {fileID: 0}
 --- !u!114 &2679841761942988121
 MonoBehaviour:

@@ -40,6 +40,7 @@ public class AssemblerButton : MonoBehaviour
     {
         // todo: test
         GetComponent<Image>().sprite = item.GetComponent<Ingredient>().CanUse() ? normalImage : corruptedImage;
+        GetComponent<Button>().interactable = item.GetComponent<Ingredient>().CanUse();
     }
 
     /// <summary>

@@ -171,7 +171,7 @@ public class AssemblerCanvas : MonoBehaviour
             }
             
             _stackedItems.Add(new Tuple<GameObject, TypeOfIngredient>(placedObject, _currentIngredientType));
-            // todo: calculate xDistances and add to list
+            xDistances.Add(Math.Abs(_centerX - placedObject.GetComponent<RectTransform>().anchoredPosition.x));
             _currentIngredientType = TypeOfIngredient.None;
         }
     }

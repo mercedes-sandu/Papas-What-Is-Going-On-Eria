@@ -9,7 +9,7 @@ public class GameMaster : MonoBehaviour
     /// <summary>
     /// The time that is allowed to pass until the level is over.
     /// </summary>
-    [SerializeField] private float levelTime = 300f;
+    [SerializeField] private float levelTime = 180f;
 
     /// <summary>
     /// The timer text.
@@ -44,7 +44,7 @@ public class GameMaster : MonoBehaviour
             _timeLeft -= Time.deltaTime;
 
             string minutesLeft = Mathf.FloorToInt(_timeLeft / 60).ToString();
-            string seconds = (_timeLeft % 60).ToString("F0");
+            string seconds = Mathf.FloorToInt(_timeLeft % 60).ToString();
             seconds = seconds.Length == 1 ? "0" + seconds : seconds;
 
             timerText.text = minutesLeft + ":" + seconds;

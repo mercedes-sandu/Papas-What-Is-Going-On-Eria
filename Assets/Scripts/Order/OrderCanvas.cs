@@ -42,13 +42,12 @@ public class OrderCanvas : MonoBehaviour
     /// <summary>
     /// The dictionary of ingredients mapped to their images.
     /// </summary>
-    private Dictionary<TypeOfIngredient, Image> _images = new Dictionary<TypeOfIngredient, Image>();
+    private readonly Dictionary<TypeOfIngredient, Image> _images = new Dictionary<TypeOfIngredient, Image>();
 
     /// <summary>
     /// To be appended to text if there is no ingredient for a particular ingredient type.
     /// </summary>
-    private const string NullObjectString = "        ???";
-    // TODO: change this to say [redacted] or something
+    private const string NullObjectString = " [REDACTED]";
 
     /// <summary>
     /// The canvas component.
@@ -100,7 +99,7 @@ public class OrderCanvas : MonoBehaviour
             }
             else
             {
-                _textMeshes[type].text = NullObjectString;
+                _textMeshes[type].text += NullObjectString;
                 _images[type].color = new Color(1, 1, 1, 0);
             }
         }

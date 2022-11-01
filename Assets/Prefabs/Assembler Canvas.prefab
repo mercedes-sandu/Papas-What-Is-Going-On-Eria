@@ -2265,7 +2265,7 @@ MonoBehaviour:
   closedGarbage: {fileID: 21300000, guid: 38ad82dd759969f499c64b0d54e6ed3d, type: 3}
   openGarbage: {fileID: 21300000, guid: ee907bbfb364a6148b8c07823f395c34, type: 3}
   xDistances: []
-  popClip: {fileID: 8300000, guid: c151817dc56151e43b8dad20d58eea3e, type: 3}
+  popClip: {fileID: 8300000, guid: 80fad35b821b5954a81291c147d7c89b, type: 3}
   trashClip: {fileID: 8300000, guid: af5feb3351d4a9d47b37c9e6d1646d64, type: 3}
 --- !u!82 &8056243217010936782
 AudioSource:

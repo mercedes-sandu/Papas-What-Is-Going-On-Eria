@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8907773004090235327}
   - component: {fileID: 8907773004090235326}
   - component: {fileID: 8907773004090235313}
+  - component: {fileID: 4707426341911793680}
   m_Layer: 5
   m_Name: Veggie Burgers
   m_TagString: Untagged
@@ -133,6 +134,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4707426341911793680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907773004090235315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8689d1774e045d64599a3ec02030e860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 2920915888768962550, guid: 297d2fa1b793d0b4d94b32150b98a4d6, type: 3}
+  normalImage: {fileID: 21300000, guid: 682d2b3b22118054c9d67f1e127b0d83, type: 3}
+  corruptedImage: {fileID: 21300000, guid: 765804e56f24bfb429c97648cde2e686, type: 3}
 --- !u!1 &8907773004369839184
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,6 +237,7 @@ GameObject:
   - component: {fileID: 8907773004561100087}
   - component: {fileID: 8907773004561100086}
   - component: {fileID: 8907773004561100105}
+  - component: {fileID: 5217649315369605905}
   m_Layer: 5
   m_Name: Chicken Burgers
   m_TagString: Untagged
@@ -342,6 +359,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5217649315369605905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907773004561100107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8689d1774e045d64599a3ec02030e860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 2920915888768962550, guid: 7a3df7bbcaca83f419ae77935a64aee6, type: 3}
+  normalImage: {fileID: 21300000, guid: b1c8b17b782b00242a000081654969cd, type: 3}
+  corruptedImage: {fileID: 21300000, guid: 765804e56f24bfb429c97648cde2e686, type: 3}
 --- !u!1 &8907773004865214785
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,6 +625,7 @@ GameObject:
   - component: {fileID: 8907773005239490953}
   - component: {fileID: 8907773005239490952}
   - component: {fileID: 8907773005239490955}
+  - component: {fileID: 8304164861935395553}
   m_Layer: 5
   m_Name: Beef Burgers
   m_TagString: Untagged
@@ -714,6 +747,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8304164861935395553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907773005239490957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8689d1774e045d64599a3ec02030e860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 2920915888768962550, guid: 6993d39e3426d7c4e81d823f8d0bc66e, type: 3}
+  normalImage: {fileID: 21300000, guid: aab81a076cbb28743aaaa0c4e2c9dc68, type: 3}
+  corruptedImage: {fileID: 21300000, guid: 765804e56f24bfb429c97648cde2e686, type: 3}
 --- !u!1 &8907773005391468299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1118,6 +1166,7 @@ GameObject:
   - component: {fileID: 8907773005819390873}
   - component: {fileID: 8907773005819390872}
   - component: {fileID: 8907773005819390875}
+  - component: {fileID: 510823296851215043}
   m_Layer: 5
   m_Name: Turkey Burgers
   m_TagString: Untagged
@@ -1239,3 +1288,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &510823296851215043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907773005819390877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8689d1774e045d64599a3ec02030e860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 2920915888768962550, guid: 018b5873042aa254c909be46f4a29b6b, type: 3}
+  normalImage: {fileID: 21300000, guid: ab052979fad36454a994b382d7c6a315, type: 3}
+  corruptedImage: {fileID: 21300000, guid: 765804e56f24bfb429c97648cde2e686, type: 3}
