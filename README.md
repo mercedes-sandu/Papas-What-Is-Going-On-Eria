@@ -4,6 +4,8 @@
 
 Papa's What-Is-Going-On-Eria is a short game inspired by [Papa's Pizzeria](https://www.coolmathgames.com/0-papas-pizzeria). However, this version is a little bit different. For one, your player can move around the 2-dimensional space to go to each of the stations. Furthermore, something interesting happens every time you complete an order:one of the ingredients becomes corrupted and unusable! The Papa's What-Is-Going-On-Eria staff still has not released a public statement about this phenomenon, so it looks like you'll be serving up some burgers without buns, potentially.
 
+This game was made for COMP_SCI 376-0 in about a week and a half.
+
 ## Player Controls
 - WASD or arrow keys to move up, left, down, or right, respectively.
 - Left mouse button to click on buttons/objects.
