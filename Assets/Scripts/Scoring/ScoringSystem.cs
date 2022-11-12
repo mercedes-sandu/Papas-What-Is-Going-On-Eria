@@ -4,6 +4,7 @@ using System.Linq;
 using Scripts;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoringSystem : MonoBehaviour
 {
@@ -43,6 +44,8 @@ public class ScoringSystem : MonoBehaviour
         GameEvent.OnSodaOrderComplete += ScoreSodaOrder;
         GameEvent.OnOrderComplete += IncrementOrdersCompleted;
         GameEvent.OnLevelComplete += CompleteLevel;
+
+        Time.timeScale = 1;
     }
 
     /// <summary>
@@ -124,6 +127,14 @@ public class ScoringSystem : MonoBehaviour
         {
             GameEvent.ChangeScore(-10);
         }
+    }
+
+    /// <summary>
+    /// Restarts the level.
+    /// </summary>
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     /// <summary>
