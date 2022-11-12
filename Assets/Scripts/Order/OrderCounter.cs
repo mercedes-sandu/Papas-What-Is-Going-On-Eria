@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Scripts;
 using UnityEngine;
 
 [RequireComponent(typeof(Order))]
