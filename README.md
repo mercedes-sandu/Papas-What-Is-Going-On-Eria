@@ -51,7 +51,7 @@ Click play at the top of the screen in the Unity editor, and play!
 
 ### Build
 
-A build is available for download in this repository. Simply download and run it!
+A [build](https://github.com/mercedes-sandu/Papas-What-Is-Going-On-Eria/releases/tag/v1.0.0) is available for download in this repository. Download "Papas.What.Is.Going.On.Eria.zip", unzip it where you wish, and run the Papa's What Is Going On Eria application executable.
 
 ## Resources (Credits)
 
